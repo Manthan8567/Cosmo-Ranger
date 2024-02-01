@@ -20,10 +20,13 @@ public class EnemyFSM : MonoBehaviour
     private EnemyState currentState = EnemyState.IDLE;
     private Vector3 initialPosition;
 
+    private Animator animator;
+
 
     void Awake()
     {
         initialPosition = this.transform.position;
+        animator = this.GetComponent<Animator>();
     }
 
     void Update()
@@ -55,6 +58,8 @@ public class EnemyFSM : MonoBehaviour
         // Transition (IDLE -> CHASE)
         float distance = Vector3.Distance(this.transform.position, target.position);
 
+        this.animator.SetBool("isWalking", false);
+
         if (distance < chaseRadius)
         {
             currentState = EnemyState.CHASE;
@@ -81,7 +86,9 @@ public class EnemyFSM : MonoBehaviour
     {
         // Action
         this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, chaseSpeed * Time.deltaTime);
-        this.transform.LookAt(target.position);
+        this.transform.LookAt(target);
+
+        this.animator.SetBool("isWalking", true);
 
         // Transition (CHASE -> ATTACK / PATROL)
         float distance = Vector3.Distance(this.transform.position, target.position);
@@ -89,6 +96,7 @@ public class EnemyFSM : MonoBehaviour
         if (distance < attackRadius)
         {
             currentState = EnemyState.ATTACK;
+            this.animator.SetBool("isWalking", false);
         }
 
         if (distance > chaseRadius)
@@ -106,6 +114,7 @@ public class EnemyFSM : MonoBehaviour
         if (timeSinceLastAttack > timeBetweenAttacks)
         {
             UnityEngine.Debug.Log("Attacked");
+            animator.SetTrigger("Punch");
 
             timeSinceLastAttack = 0;
         }
