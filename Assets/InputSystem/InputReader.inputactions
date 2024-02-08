@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Turn",
+                    "type": "Value",
+                    "id": "792a8aae-455f-4117-9a0e-a94125d02c57",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -90,54 +99,59 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Camera",
-            "id": "f38aec1f-bffe-4d76-a7f2-bc4c20eee3d1",
-            "actions": [
+                },
                 {
-                    "name": "LookAround",
-                    "type": "Value",
-                    "id": "335477a9-1a98-49f7-8834-71956d82efc0",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "Mouse",
-                    "id": "a44b4887-339b-4fa0-8f95-61916cc82a00",
-                    "path": "1DAxis",
+                    "name": "2D Vector",
+                    "id": "8aa074ff-bd97-42a1-86b3-6ff33c326839",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookAround",
+                    "action": "Turn",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "f61e9ffa-99c1-4c9e-ac52-a6274368ec50",
-                    "path": "<Mouse>/delta/left",
+                    "name": "up",
+                    "id": "68666595-e0dc-49c5-b3c3-ba286ae3abcf",
+                    "path": "<Mouse>/delta/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookAround",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "3e0c303d-d8a4-459e-9ae2-be41b62f8485",
+                    "name": "down",
+                    "id": "091e7b37-66be-4c0f-846e-68a427fb6118",
+                    "path": "<Mouse>/delta/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "fe8b2e48-0f5d-4ad8-9505-eb4a63b5842f",
+                    "path": "<Mouse>/delta/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "91b04724-edfd-4b54-8d34-23c1201193e7",
                     "path": "<Mouse>/delta/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookAround",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
