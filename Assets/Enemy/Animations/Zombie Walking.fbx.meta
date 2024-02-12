@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0355c1214e21dc43a1ad52e8f7a2333
+guid: 16f20344f5a1ffd41b4e2ef2fe9f585d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Orc Idle
+      name: Zombie Walking
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 160
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -27,13 +27,13 @@ public class PlayerAnimatorController : MonoBehaviour
             // Get player's local velocity
             Vector3 localVelocity = transform.InverseTransformDirection(_rigidbody.velocity);
             // Get forward velocity
-            _animator.SetFloat("speed", localVelocity.z);
+            _animator.SetFloat("Speed", localVelocity.z);
         }
 
         // Idle
         else
         {
-            _animator.SetFloat("speed", 0);
+            _animator.SetFloat("Speed", 0);
         }
     }
 
@@ -44,7 +44,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
         if (yNormal > 0.7f)
         {
-            _animator.SetTrigger("landed");
+            _animator.SetTrigger("Landed");
         }
     }
 }

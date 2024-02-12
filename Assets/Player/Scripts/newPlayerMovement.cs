@@ -68,7 +68,7 @@ public class newPlayerMovement : MonoBehaviour
             if (_rigidbody.velocity.y < 1 && timeSinceJump > jumpCoolTime)
             {
                 _rigidbody.AddForce(0, jumpForce, 0);
-                _animator.SetTrigger("jump");  // Should i put this code here or in PlayerAnimatorController?
+                _animator.SetTrigger("Jump");
 
                 timeSinceJump = 0;
             }

@@ -8,14 +8,11 @@ public class EnemyFSM : MonoBehaviour
     [SerializeField] private Transform target;
 
     private float chaseRadius = 10;
-    private float chaseSpeed = 2;
+    private float chaseSpeed = 0.8f;
 
     private float patrolSpeed = 1.5f;
 
     private float attackRadius = 1.5f;
-
-    private float timeBetweenAttacks = 2;
-    private float timeSinceLastAttack;
 
     private EnemyState currentState = EnemyState.IDLE;
     private Vector3 initialPosition;
@@ -31,8 +28,6 @@ public class EnemyFSM : MonoBehaviour
 
     void Update()
     {
-        timeSinceLastAttack += Time.deltaTime;
-
         switch (currentState)
         {
             case EnemyState.IDLE:
@@ -108,16 +103,7 @@ public class EnemyFSM : MonoBehaviour
     public void Attack()
     {
         // Action
-        // This is only for the test. We should implement the real attack system later. -24/01/29
-        this.transform.LookAt(target.position);
-
-        if (timeSinceLastAttack > timeBetweenAttacks)
-        {
-            UnityEngine.Debug.Log("Attacked");
-            animator.SetTrigger("Punch");
-
-            timeSinceLastAttack = 0;
-        }
+        GetComponent<EnemyCombat>().CheckAttackCondition();
 
         // Transition (ATTACK -> CHASE)
         float distance = Vector3.Distance(this.transform.position, target.position);
