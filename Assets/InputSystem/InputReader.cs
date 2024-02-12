@@ -53,6 +53,15 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""f2e8a960-38b0-4e37-bf93-58ea002fc0a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +185,17 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8481f7ef-c2aa-48a0-b713-b5856d351d2b"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +207,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Turn = m_Player.FindAction("Turn", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Turn;
+    private readonly InputAction m_Player_Run;
     public struct PlayerActions
     {
         private @InputReader m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Turn => m_Wrapper.m_Player_Turn;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -276,6 +299,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @Turn.started += instance.OnTurn;
             @Turn.performed += instance.OnTurn;
             @Turn.canceled += instance.OnTurn;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -289,6 +315,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @Turn.started -= instance.OnTurn;
             @Turn.performed -= instance.OnTurn;
             @Turn.canceled -= instance.OnTurn;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -311,5 +340,6 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

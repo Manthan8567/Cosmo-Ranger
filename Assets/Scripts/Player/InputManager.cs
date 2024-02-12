@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public static Vector2 moveInput;
     public static Vector2 turnInput;
     public static float jumpInput;
+    public static float runInput;
 
 
     private void Awake()
@@ -28,8 +29,13 @@ public class InputManager : MonoBehaviour
         myInputReader.Player.Jump.performed += ctx => jumpInput = ctx.ReadValue<float>();
         myInputReader.Player.Jump.canceled += ctx => jumpInput = ctx.ReadValue<float>();
 
+        // Player turn input
         myInputReader.Player.Turn.performed += ctx => turnInput = ctx.ReadValue<Vector2>();
         myInputReader.Player.Turn.canceled += ctx => turnInput = ctx.ReadValue<Vector2>();
+
+        // Player run input
+        myInputReader.Player.Run.performed += ctx => runInput = ctx.ReadValue<float>();
+        myInputReader.Player.Run.canceled += ctx => runInput = ctx.ReadValue<float>();
 
 
         myInputReader.Player.Enable();

@@ -8,13 +8,13 @@ public class EnemyFSM : MonoBehaviour
     [SerializeField] private Transform target;
 
     private float chaseRadius = 10;
-    private float chaseSpeed = 3;
+    private float chaseSpeed = 2;
 
-    private float patrolSpeed = 2;
+    private float patrolSpeed = 1.5f;
 
     private float attackRadius = 1.5f;
 
-    private float timeBetweenAttacks = 1.5f;
+    private float timeBetweenAttacks = 2;
     private float timeSinceLastAttack;
 
     private EnemyState currentState = EnemyState.IDLE;
