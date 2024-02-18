@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EnemyCombat : MonoBehaviour, IFightable
@@ -8,6 +9,7 @@ public class EnemyCombat : MonoBehaviour, IFightable
     [SerializeField] private Transform target;
     [SerializeField] Image hpBarBG; // To turn off when it's dead
     [SerializeField] Image hpBar;
+    [SerializeField] UnityEvent<int> OnTakeDamage;
 
     Animator _animator;
 
@@ -18,7 +20,6 @@ public class EnemyCombat : MonoBehaviour, IFightable
 
     private int attackDamage = 10;
 
-    private float timeBetweenAttacks = 2;
     private float timeSinceLastAttack;
 
     private void Start()
@@ -33,25 +34,33 @@ public class EnemyCombat : MonoBehaviour, IFightable
         timeSinceLastAttack += Time.deltaTime;
     }
 
-    public void Attack(GameObject target)
+    public void Punch()
     {
         this.transform.LookAt(target.transform);
 
-        target.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
         _animator.SetTrigger("Punch");
 
         timeSinceLastAttack = 0;
     }
 
-    public void CheckAttackCondition()
+    // Animation event
+    void Hit()
+    {
+        target.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
+    }
+
+    public void CheckAttackCondition(AttackType type, float attackRadius, float attackCoolTime)
     {
         PlayerCombat targetCombatSystem = target.GetComponent<PlayerCombat>();
 
         if (targetCombatSystem != null && !targetCombatSystem.IsDead())
         {
-            if (timeSinceLastAttack > timeBetweenAttacks)
+            if (timeSinceLastAttack > attackCoolTime)
             {
-                Attack(target.gameObject);
+                if (type == AttackType.PUNCH)
+                {
+                    Punch();
+                }
             }
         }
     }
@@ -63,13 +72,15 @@ public class EnemyCombat : MonoBehaviour, IFightable
         // To prevent enemy following player after death
         GetComponent<EnemyFSM>().enabled = false;
         // To prevent player being able to attack dead enemy
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
 
         hpBarBG.enabled = false;    
     }
 
     public void TakeDamage(int damage)
     {
+        OnTakeDamage?.Invoke(damage);
+
         currHP -= damage;
 
         // Update HP UI

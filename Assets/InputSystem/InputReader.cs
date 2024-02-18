@@ -64,9 +64,18 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Punch"",
                     ""type"": ""Button"",
                     ""id"": ""7527bd7a-be06-4d03-bd82-87a6fe7ff9df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_Fireball"",
+                    ""type"": ""Button"",
+                    ""id"": ""5973ef2f-a7c6-4c26-900b-e3deab77b83c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -213,7 +222,18 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Punch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1028c039-982c-4542-a4ba-158ebba67c70"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_Fireball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -228,7 +248,8 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Turn = m_Player.FindAction("Turn", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
+        m_Player_Spell_Fireball = m_Player.FindAction("Spell_Fireball", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -294,7 +315,8 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Turn;
     private readonly InputAction m_Player_Run;
-    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Punch;
+    private readonly InputAction m_Player_Spell_Fireball;
     public struct PlayerActions
     {
         private @InputReader m_Wrapper;
@@ -303,7 +325,8 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Turn => m_Wrapper.m_Player_Turn;
         public InputAction @Run => m_Wrapper.m_Player_Run;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Punch => m_Wrapper.m_Player_Punch;
+        public InputAction @Spell_Fireball => m_Wrapper.m_Player_Spell_Fireball;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -325,9 +348,12 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @Punch.started += instance.OnPunch;
+            @Punch.performed += instance.OnPunch;
+            @Punch.canceled += instance.OnPunch;
+            @Spell_Fireball.started += instance.OnSpell_Fireball;
+            @Spell_Fireball.performed += instance.OnSpell_Fireball;
+            @Spell_Fireball.canceled += instance.OnSpell_Fireball;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -344,9 +370,12 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @Punch.started -= instance.OnPunch;
+            @Punch.performed -= instance.OnPunch;
+            @Punch.canceled -= instance.OnPunch;
+            @Spell_Fireball.started -= instance.OnSpell_Fireball;
+            @Spell_Fireball.performed -= instance.OnSpell_Fireball;
+            @Spell_Fireball.canceled -= instance.OnSpell_Fireball;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -370,6 +399,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnPunch(InputAction.CallbackContext context);
+        void OnSpell_Fireball(InputAction.CallbackContext context);
     }
 }

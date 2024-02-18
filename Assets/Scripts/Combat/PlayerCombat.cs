@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 
 public class PlayerCombat : MonoBehaviour, IFightable
 {
     [SerializeField] Image hpBar;
-    
+    [SerializeField] Projectile fireball;
+    [SerializeField] Transform rightHandTransform;
+
+    EnemyCombat target;
     Animator _animator;
     newPlayerMovement _newPlayerMovement;
+
+    public UnityEvent<int> OnTakeDamage;
 
     int maxHP = 100;
     int currHP;
 
-    float attackRadius = 5;
+    float punchRadius = 4;
+    float punchCoolTime = 1.5f;
+    int punchDamage = 20;
 
-    float attackCool = 1.5f;
+    float spellRadius = 10;
+    float spellCoolTime = 2;
+
     float timeSinceAttack = 0;
-
-    int playerDamage = 20;
 
     bool isDead = false;
 
@@ -36,10 +45,20 @@ public class PlayerCombat : MonoBehaviour, IFightable
     {
         timeSinceAttack += Time.deltaTime;
 
-        CheckAttackCondition();
+        // Left mouse -> Punch
+        if (InputManager.punchInput == 1)
+        {
+            CheckAttackCondition(AttackType.PUNCH, punchRadius, punchCoolTime);
+        }
+
+        // Press 1 -> Spell -Fireball 
+        if (InputManager.spell_fireballInput == 1)
+        {
+            CheckAttackCondition(AttackType.SPELL, spellRadius, spellCoolTime);
+        }
     }
 
-    public void CheckAttackCondition()
+    public void CheckAttackCondition(AttackType type, float attackRadius, float attackCoolTime)
     {
         // Shoot a ray based on the mouse position on the screen
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -47,38 +66,60 @@ public class PlayerCombat : MonoBehaviour, IFightable
         // Get all the hits info
         RaycastHit[] hits = Physics.RaycastAll(ray, attackRadius);
 
-        // Check the hits one by one if it's enemy
+        // Check the hits one by one if it's an enemy
         foreach (RaycastHit hit in hits)
         {
-            GameObject target = hit.transform.gameObject;
+            target = hit.transform.GetComponent<EnemyCombat>();
 
             if (target == null) { continue; }
 
-            else if (hit.transform.CompareTag("Enemy"))
+            if (timeSinceAttack > attackCoolTime)
             {
-                if (timeSinceAttack > attackCool)
+                if (type == AttackType.PUNCH)
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        Attack(target);
-                    }
+                    Punch();
+                }
+
+                if (type == AttackType.SPELL)
+                {
+                    ThrowFireball(target);
                 }
             }
         }
     }
 
-    public void Attack(GameObject target)
+    public void Punch()
     {
         this.transform.LookAt(target.transform);
-        target.GetComponent<EnemyCombat>().TakeDamage(playerDamage);
 
+        // This will call Hit() event
         _animator.SetTrigger("Punch");
+
+        timeSinceAttack = 0;
+    }
+
+    // Animation event
+    void Hit()
+    {
+        target.GetComponent<EnemyCombat>().TakeDamage(punchDamage);
+    }
+
+    public void ThrowFireball(EnemyCombat target)
+    {
+        this.transform.LookAt(target.transform);
+
+        Projectile tempProjectile = Instantiate(fireball, rightHandTransform.position, Quaternion.identity);
+        tempProjectile.SetTarget(target);
+
+        _animator.SetTrigger("Spell_Fireball");
 
         timeSinceAttack = 0;
     }
 
     public void TakeDamage(int damage)
     {
+        OnTakeDamage?.Invoke(damage);
+
         currHP -= damage;
 
         // Update HP UI

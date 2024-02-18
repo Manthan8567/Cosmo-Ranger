@@ -42,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Punch",
                     "type": "Button",
                     "id": "7527bd7a-be06-4d03-bd82-87a6fe7ff9df",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Spell_Fireball",
+                    "type": "Button",
+                    "id": "5973ef2f-a7c6-4c26-900b-e3deab77b83c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -191,7 +200,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1028c039-982c-4542-a4ba-158ebba67c70",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spell_Fireball",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

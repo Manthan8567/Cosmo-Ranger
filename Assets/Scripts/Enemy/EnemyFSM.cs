@@ -13,6 +13,7 @@ public class EnemyFSM : MonoBehaviour
     private float patrolSpeed = 1.5f;
 
     private float attackRadius = 1.5f;
+    private float attackCoolTime = 2;
 
     private EnemyState currentState = EnemyState.IDLE;
     private Vector3 initialPosition;
@@ -103,7 +104,7 @@ public class EnemyFSM : MonoBehaviour
     public void Attack()
     {
         // Action
-        GetComponent<EnemyCombat>().CheckAttackCondition();
+        GetComponent<EnemyCombat>().CheckAttackCondition(AttackType.PUNCH, attackRadius, attackCoolTime);
 
         // Transition (ATTACK -> CHASE)
         float distance = Vector3.Distance(this.transform.position, target.position);
