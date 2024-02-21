@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class EnemyCombat : MonoBehaviour, IFightable
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private PlayerCombat target;
     [SerializeField] Image hpBarBG; // To turn off when it's dead
     [SerializeField] Image hpBar;
     [SerializeField] UnityEvent<int> OnTakeDamage;
 
     Animator _animator;
+    EnemyFSM _enemyFSM;
 
     int maxHP = 100;
     int currHP;
@@ -22,9 +23,11 @@ public class EnemyCombat : MonoBehaviour, IFightable
 
     private float timeSinceLastAttack;
 
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _enemyFSM = GetComponent<EnemyFSM>();
 
         currHP = maxHP;
     }
@@ -46,14 +49,12 @@ public class EnemyCombat : MonoBehaviour, IFightable
     // Animation event
     void Hit()
     {
-        target.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
+        target.TakeDamage(attackDamage);
     }
 
     public void CheckAttackCondition(AttackType type, float attackRadius, float attackCoolTime)
     {
-        PlayerCombat targetCombatSystem = target.GetComponent<PlayerCombat>();
-
-        if (targetCombatSystem != null && !targetCombatSystem.IsDead())
+        if (target != null && !target.IsDead())
         {
             if (timeSinceLastAttack > attackCoolTime)
             {
@@ -70,9 +71,9 @@ public class EnemyCombat : MonoBehaviour, IFightable
         _animator.SetTrigger("Die");
 
         // To prevent enemy following player after death
-        GetComponent<EnemyFSM>().enabled = false;
+        _enemyFSM.enabled = false;
         // To prevent player being able to attack dead enemy
-        GetComponent<CapsuleCollider>().enabled = false;
+        this.GetComponent<CapsuleCollider>().enabled = false;
 
         hpBarBG.enabled = false;    
     }

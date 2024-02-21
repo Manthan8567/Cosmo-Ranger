@@ -1,9 +1,84 @@
 fileFormatVersion: 2
-guid: b5a21421d806bbb458e6d311ce075c97
+guid: c850b57ff6cbe5a4bbabed7fc8c596fa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ch48_body
+    second: {fileID: 2100000, guid: 66bbe9285dcd4e047bedf3865b79f68a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ch48_body1
+    second: {fileID: 2100000, guid: 3a8aa6631ad77d54195244d600ad2d96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ch48_hair
+    second: {fileID: 2100000, guid: f9b7f8c3b2eb0264ca6f072b2e9f56b4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1001_Diffuse
+    second: {fileID: 2800000, guid: 3963076d36a93ea4dbfd3bcac9884ae8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1001_Emissive
+    second: {fileID: 2800000, guid: 7d64244fba5c6af409ef249987e59767, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1001_Glossiness
+    second: {fileID: 2800000, guid: f32ec303d1e84c244a5051511b06a375, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1001_Normal
+    second: {fileID: 2800000, guid: 34dd5de79f2f017468a89502c3bbeb25, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1001_Specular
+    second: {fileID: 2800000, guid: 19480706d90fd8a41b90febfc4ca9c13, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1002_Diffuse
+    second: {fileID: 2800000, guid: 5b9e22a151c12c442b1a533588b758b7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1002_Emissive
+    second: {fileID: 2800000, guid: 7462f39e426c98f4786da1bbf6e579a9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1002_Glossiness
+    second: {fileID: 2800000, guid: 1b218bb81131c0943ad4ba4cc9903cf1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1002_Normal
+    second: {fileID: 2800000, guid: 103c79a54ecaf324d98576f18331e999, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1002_Specular
+    second: {fileID: 2800000, guid: 152a8ee4454e28e48ba8e15247ed88a8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1003_Diffuse
+    second: {fileID: 2800000, guid: 3655090b59cef564dbf6894762a13234, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ch48_1003_Glossiness
+    second: {fileID: 2800000, guid: 1956f9d43a565504ea684f202582b804, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,11 +108,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player Spell -Fireball
+      name: T-Pose
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 69
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -46,12 +121,12 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -880,11 +955,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

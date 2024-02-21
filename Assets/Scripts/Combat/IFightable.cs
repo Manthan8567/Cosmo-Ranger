@@ -15,5 +15,5 @@ public interface IFightable
 public enum AttackType
 {
     PUNCH,
-    SPELL
+    FIREBALL
 }

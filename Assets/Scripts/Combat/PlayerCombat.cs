@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
@@ -25,10 +27,10 @@ public class PlayerCombat : MonoBehaviour, IFightable
     float punchCoolTime = 1.5f;
     int punchDamage = 20;
 
-    float spellRadius = 10;
-    float spellCoolTime = 2;
+    float fireballRadius = 7;
+    float fireballCoolTime = 2;
 
-    float timeSinceAttack = 0;
+    float timeSinceAttack = 2;
 
     bool isDead = false;
 
@@ -51,10 +53,10 @@ public class PlayerCombat : MonoBehaviour, IFightable
             CheckAttackCondition(AttackType.PUNCH, punchRadius, punchCoolTime);
         }
 
-        // Press 1 -> Spell -Fireball 
+        // Press 1 -> Fireball 
         if (InputManager.spell_fireballInput == 1)
         {
-            CheckAttackCondition(AttackType.SPELL, spellRadius, spellCoolTime);
+            CheckAttackCondition(AttackType.FIREBALL, fireballRadius, fireballCoolTime);
         }
     }
 
@@ -75,16 +77,12 @@ public class PlayerCombat : MonoBehaviour, IFightable
 
             if (timeSinceAttack > attackCoolTime)
             {
-                if (type == AttackType.PUNCH)
+                switch(type)
                 {
-                    Punch();
+                    case AttackType.PUNCH: { Punch(); break; }
+                    case AttackType.FIREBALL: { ThrowFireball(); break; }
                 }
-
-                if (type == AttackType.SPELL)
-                {
-                    ThrowFireball(target);
-                }
-            }
+            }       
         }
     }
 
@@ -99,21 +97,32 @@ public class PlayerCombat : MonoBehaviour, IFightable
     }
 
     // Animation event
-    void Hit()
+    private void Hit()
     {
         target.GetComponent<EnemyCombat>().TakeDamage(punchDamage);
     }
 
-    public void ThrowFireball(EnemyCombat target)
+    public void ThrowFireball()
+    {
+        // This will call Throw() & StartThrowing() event
+        _animator.SetTrigger("Fireball");
+
+        timeSinceAttack = 0;
+    }
+
+    // Animation event
+    private void StartThrowing()
+    {
+        this.transform.LookAt(target.transform);
+    }
+
+    // Animation event
+    private void Throw()
     {
         this.transform.LookAt(target.transform);
 
         Projectile tempProjectile = Instantiate(fireball, rightHandTransform.position, Quaternion.identity);
         tempProjectile.SetTarget(target);
-
-        _animator.SetTrigger("Spell_Fireball");
-
-        timeSinceAttack = 0;
     }
 
     public void TakeDamage(int damage)

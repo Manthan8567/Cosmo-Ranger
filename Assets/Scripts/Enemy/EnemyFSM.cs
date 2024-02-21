@@ -7,7 +7,7 @@ public class EnemyFSM : MonoBehaviour
 {
     [SerializeField] private Transform target;
 
-    private float chaseRadius = 10;
+    private float chaseRadius = 7;
     private float chaseSpeed = 0.8f;
 
     private float patrolSpeed = 1.5f;
@@ -84,7 +84,7 @@ public class EnemyFSM : MonoBehaviour
         this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, chaseSpeed * Time.deltaTime);
         this.transform.LookAt(target);
 
-        this.animator.SetBool("isWalking", true);
+        this.animator.SetBool("isWalking", true);      
 
         // Transition (CHASE -> ATTACK / PATROL)
         float distance = Vector3.Distance(this.transform.position, target.position);
