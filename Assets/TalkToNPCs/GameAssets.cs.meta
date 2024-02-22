@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3b803e20a4fd97b45be60489e2bf6f97
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pfChatBubble: {fileID: 3728437068038445425, guid: 989d3d1b7b1ce7d478b68467dd265d5f, type: 3}
+  - m_WeaponTracer: {instanceID: 0}
+  - m_MarineSpriteSheet: {instanceID: 0}
+  - m_DoorRed: {instanceID: 0}
+  - m_DoorGreen: {instanceID: 0}
+  - m_DoorBlue: {instanceID: 0}
+  - m_DoorKeyHoleRed: {instanceID: 0}
+  - m_DoorKeyHoleGreen: {instanceID: 0}
+  - m_DoorKeyHoleBlue: {instanceID: 0}
+  - cinemachineDefaultNoiseProfile: {instanceID: 0}
+  executionOrder: -90
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

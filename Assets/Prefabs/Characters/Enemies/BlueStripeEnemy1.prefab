@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7d257c40fc4390f489484dfd8de7a958, type: 3}
       propertyPath: m_Name
-      value: EnemyModel
+      value: BlueStripeEnemy1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 7d257c40fc4390f489484dfd8de7a958, type: 3}
       propertyPath: m_Controller
@@ -63,9 +63,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d257c40fc4390f489484dfd8de7a958, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2482357916371487635}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d257c40fc4390f489484dfd8de7a958, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8256250738052951302}
   m_SourcePrefab: {fileID: 100100000, guid: 7d257c40fc4390f489484dfd8de7a958, type: 3}
 --- !u!1 &3123346223077336226 stripped
 GameObject:
@@ -95,16 +92,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8256250738052951302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3123346223077336226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8508577c1f6e649a1735b873ef5ffe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
