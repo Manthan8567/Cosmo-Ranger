@@ -18,6 +18,9 @@ public class newPlayerMovement : MonoBehaviour
     float jumpCoolTime = 1.5f;
     float timeSinceJump = 0;
 
+    float xInput = 0;
+    float zInput = 0;
+
 
     private void Start()
     {
@@ -34,8 +37,8 @@ public class newPlayerMovement : MonoBehaviour
     public void Move()
     {
         // Walk
-        float xInput = InputManager.moveInput.x;
-        float zInput = InputManager.moveInput.y;
+        xInput = InputManager.moveInput.x;
+        zInput = InputManager.moveInput.y;
 
         Vector3 direction = new Vector3(xInput, 0f, zInput).normalized;
 
@@ -47,7 +50,26 @@ public class newPlayerMovement : MonoBehaviour
             _rigidbody.velocity = new Vector3(xInput * runSpeed, _rigidbody.velocity.y, zInput * runSpeed);
         }
 
+        SetMoveAnimation();
         HeadForward(direction);
+    }
+
+    private void SetMoveAnimation()
+    {
+        // Walking
+        if (xInput != 0 || zInput != 0)
+        {
+            // Get player's local velocity
+            Vector3 localVelocity = transform.InverseTransformDirection(_rigidbody.velocity);
+            // Get forward velocity
+            _animator.SetFloat("Speed", localVelocity.z);
+        }
+
+        // Idle
+        else
+        {
+            _animator.SetFloat("Speed", 0);
+        }
     }
 
     public void HeadForward(Vector3 direction)
@@ -72,6 +94,17 @@ public class newPlayerMovement : MonoBehaviour
 
                 timeSinceJump = 0;
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // When player landed from jump
+        float yNormal = collision.contacts[0].normal.y;
+
+        if (yNormal > 0.7f)
+        {
+            _animator.SetTrigger("Landed");
         }
     }
 }

@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour, IFightable
     int maxHP = 100;
     int currHP;
 
-    float punchRadius = 4;
+    float punchRadius = 3;
     float punchCoolTime = 1.5f;
     int punchDamage = 20;
 

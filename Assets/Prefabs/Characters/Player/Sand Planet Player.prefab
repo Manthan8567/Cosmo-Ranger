@@ -269,15 +269,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -361,9 +361,6 @@ PrefabInstance:
       addedObject: {fileID: 3681000299473622704}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1446536874766847209}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 82114628782645907}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c850b57ff6cbe5a4bbabed7fc8c596fa, type: 3}
       insertIndex: -1
@@ -445,18 +442,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1446536874766847209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363695041767998127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef9b4645da67ef4ab3cf99278bb4618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &82114628782645907
 MonoBehaviour:
   m_ObjectHideFlags: 0
