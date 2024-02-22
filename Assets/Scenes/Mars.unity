@@ -10519,6 +10519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRig
       objectReference: {fileID: 0}
+    - target: {fileID: 3321052662214308843, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3922197522303216070, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_FollowOffset.y
       value: 2.5
@@ -10557,15 +10561,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7608851400439222972, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1053508
+      value: 0.10535081
       objectReference: {fileID: 0}
     - target: {fileID: 7608851400439222972, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004277658
+      value: -0.0000000042776573
       objectReference: {fileID: 0}
     - target: {fileID: 7608851400439222972, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.5317647e-10
+      value: 4.5317655e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8785827073331189869, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10577,11 +10581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8785827073331189869, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000033253455
+      value: -0.000033253706
       objectReference: {fileID: 0}
     - target: {fileID: 8785827073331189869, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000815774
+      value: 0.000008157802
       objectReference: {fileID: 0}
     - target: {fileID: 8946379819720930307, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10613,15 +10617,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182545879089707214, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22059725
+      value: 0.22059727
       objectReference: {fileID: 0}
     - target: {fileID: 9182545879089707214, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000033432778
+      value: -0.000033383883
       objectReference: {fileID: 0}
     - target: {fileID: 9182545879089707214, guid: 480262b8a7da0614d9aae238659d4cce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000007561456
+      value: 0.000007550397
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
