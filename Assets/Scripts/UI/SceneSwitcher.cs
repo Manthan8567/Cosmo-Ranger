@@ -7,6 +7,8 @@ public class SceneSwitcher : MonoBehaviour
 {
     public void SwitchScene(int sceneIndex)
     {
+        GameManager.Singleton.ResumeGame();
+
         SceneManager.LoadScene(sceneIndex);
     }
 

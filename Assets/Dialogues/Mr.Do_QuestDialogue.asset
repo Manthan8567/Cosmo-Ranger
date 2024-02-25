@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fa2fcb08c070545aa6bad9f2294e46, type: 3}
+  m_Name: Mr.Do_QuestDialogue
+  m_EditorClassIdentifier: 
+  characterName: Mr. Do
+  dialoguePhrase:
+  - Hey! I was waiting for you. Please.. please help me.
+  - I got injured while killing the zombies. So, please kill the zombies instead
+    of me.
+  - By the way, where is your sword?
+  - You've lost it? Well, don't worry. In this planet, you can use magical power.
+  - Anyways, you should be hurry. Kill all the zombies, and bring the diamonds from
+    their dead bodies.
+  - Whenever you get them all, ride on the spaceship ASAP. Go!

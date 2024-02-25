@@ -1,23 +1,12 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class ChatBubble3D : MonoBehaviour {
 
-    public static void Create(Transform parent, Vector3 localPosition, IconType iconType, string text) {
+    public static void Create(Transform parent, Vector3 localPosition, IconType iconType, string text) 
+    {
         Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
         chatBubbleTransform.localPosition = localPosition;
 
@@ -25,8 +14,6 @@ public class ChatBubble3D : MonoBehaviour {
 
         Destroy(chatBubbleTransform.gameObject, 6f);
     }
-
-
 
     public enum IconType {
         Happy,
