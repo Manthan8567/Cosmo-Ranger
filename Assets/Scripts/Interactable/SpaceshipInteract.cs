@@ -29,6 +29,8 @@ public class SpaceshipInteract : MonoBehaviour, IInteractable
         }
         else
         {
+            AudioManager.Singleton.PlaySoundEffect("SpaceshipTalk");
+
             ChatBubble3D.Create(this.transform, chatBubblePos.localPosition, ChatBubble3D.IconType.Happy, chatBubbleText);
         }
     }

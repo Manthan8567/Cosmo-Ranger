@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static CursorManager;
 
 public class EnemyCombat : MonoBehaviour, IFightable
 {
@@ -10,6 +11,7 @@ public class EnemyCombat : MonoBehaviour, IFightable
     [SerializeField] Image hpBarBG; // To turn off when it's dead
     [SerializeField] Image hpBar;
     [SerializeField] UnityEvent<int> OnTakeDamage;
+    [SerializeField] GameObject[] dropItems;
 
     Animator _animator;
     EnemyFSM _enemyFSM;
@@ -49,6 +51,8 @@ public class EnemyCombat : MonoBehaviour, IFightable
     // Animation event
     void Hit()
     {
+        AudioManager.Singleton.PlaySoundEffect("SandZombieAttack");
+
         target.TakeDamage(attackDamage);
     }
 
@@ -70,12 +74,20 @@ public class EnemyCombat : MonoBehaviour, IFightable
     {
         _animator.SetTrigger("Die");
 
+        AudioManager.Singleton.PlaySoundEffect("SandZombieDeath");
+
         // To prevent enemy following player after death
         _enemyFSM.enabled = false;
         // To prevent player being able to attack dead enemy
         this.GetComponent<CapsuleCollider>().enabled = false;
 
-        hpBarBG.enabled = false;    
+        hpBarBG.enabled = false;   
+        
+        // Enemy drops the items
+        foreach(GameObject item in dropItems)
+        {
+            Instantiate(item, this.transform.position, Quaternion.identity, this.transform);
+        }
     }
 
     public void TakeDamage(int damage)

@@ -65,24 +65,18 @@ public class PlayerCombat : MonoBehaviour, IFightable
         // Shoot a ray based on the mouse position on the screen
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        // Get all the hits info
-        RaycastHit[] hits = Physics.RaycastAll(ray, attackRadius);
-
-        // Check the hits one by one if it's an enemy
-        foreach (RaycastHit hit in hits)
+        if (Physics.Raycast(ray, out RaycastHit hit, attackRadius, LayerMask.GetMask("Enemy")))
         {
             target = hit.transform.GetComponent<EnemyCombat>();
 
-            if (target == null) { continue; }
-
             if (timeSinceAttack > attackCoolTime)
             {
-                switch(type)
+                switch (type)
                 {
                     case AttackType.PUNCH: { Punch(); break; }
                     case AttackType.FIREBALL: { ThrowFireball(); break; }
                 }
-            }       
+            }
         }
     }
 
@@ -96,9 +90,11 @@ public class PlayerCombat : MonoBehaviour, IFightable
         timeSinceAttack = 0;
     }
 
-    // Animation event
+    // Animation event (Punch)
     private void Hit()
     {
+        AudioManager.Singleton.PlaySoundEffect("PlayerPunch");
+
         target.GetComponent<EnemyCombat>().TakeDamage(punchDamage);
     }
 
@@ -123,6 +119,8 @@ public class PlayerCombat : MonoBehaviour, IFightable
 
         Projectile tempProjectile = Instantiate(fireball, rightHandTransform.position, Quaternion.identity);
         tempProjectile.SetTarget(target);
+
+        AudioManager.Singleton.PlaySoundEffect("Fireball");
     }
 
     public void TakeDamage(int damage)
@@ -151,6 +149,8 @@ public class PlayerCombat : MonoBehaviour, IFightable
     public void Die()
     {
         _animator.SetTrigger("Die");
+
+        AudioManager.Singleton.PlaySoundEffect("PlayerDeath");
 
         // Player cannot move
         _newPlayerMovement.enabled = false;

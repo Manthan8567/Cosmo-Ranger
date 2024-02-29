@@ -7,12 +7,16 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private DialogueManager _dialogueManager;
     [SerializeField] private string interactText;
     [SerializeField] private Transform chatBubblePos;
+    // NPC will have different voice
+    [SerializeField] private AudioClip voice;
 
     private string chatBubbleText = "AHHHH! OUCH!";
 
 
     public void Interact(Transform interactorTransform) 
-    {        
+    {
+        AudioManager.Singleton.PlaySoundEffect(voice);
+
         _dialogueManager.StartDialogue();
     }
 

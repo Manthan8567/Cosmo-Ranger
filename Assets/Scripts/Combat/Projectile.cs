@@ -48,6 +48,8 @@ public class Projectile : MonoBehaviour
         {
             enemy.TakeDamage(fireballDamage);
 
+            AudioManager.Singleton.PlaySoundEffect("HitFireball");
+
             Destroy(this.gameObject);
         }
     }
