@@ -7,19 +7,9 @@ using static CursorManager;
 
 public class EnemyCombat : MonoBehaviour, IFightable
 {
-    [SerializeField] private PlayerCombat target;
-    [SerializeField] Image hpBarBG; // To turn off when it's dead
-    [SerializeField] Image hpBar;
-    [SerializeField] UnityEvent<int> OnTakeDamage;
-    [SerializeField] GameObject[] dropItems;
+    [SerializeField] private newHealth target;
 
     Animator _animator;
-    EnemyFSM _enemyFSM;
-
-    int maxHP = 100;
-    int currHP;
-
-    bool isDead = false;
 
     private int attackDamage = 10;
 
@@ -29,9 +19,6 @@ public class EnemyCombat : MonoBehaviour, IFightable
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _enemyFSM = GetComponent<EnemyFSM>();
-
-        currHP = maxHP;
     }
 
     private void Update()
@@ -48,7 +35,7 @@ public class EnemyCombat : MonoBehaviour, IFightable
         timeSinceLastAttack = 0;
     }
 
-    // Animation event
+    // Animation(Punch) event
     void Hit()
     {
         AudioManager.Singleton.PlaySoundEffect("SandZombieAttack");
@@ -58,7 +45,7 @@ public class EnemyCombat : MonoBehaviour, IFightable
 
     public void CheckAttackCondition(AttackType type, float attackRadius, float attackCoolTime)
     {
-        if (target != null && !target.IsDead())
+        if (target != null && !target.IsDead)
         {
             if (timeSinceLastAttack > attackCoolTime)
             {
@@ -68,53 +55,5 @@ public class EnemyCombat : MonoBehaviour, IFightable
                 }
             }
         }
-    }
-
-    public void Die()
-    {
-        _animator.SetTrigger("Die");
-
-        AudioManager.Singleton.PlaySoundEffect("SandZombieDeath");
-
-        // To prevent enemy following player after death
-        _enemyFSM.enabled = false;
-        // To prevent player being able to attack dead enemy
-        this.GetComponent<CapsuleCollider>().enabled = false;
-
-        hpBarBG.enabled = false;   
-        
-        // Enemy drops the items
-        foreach(GameObject item in dropItems)
-        {
-            Instantiate(item, this.transform.position, Quaternion.identity, this.transform);
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        OnTakeDamage?.Invoke(damage);
-
-        currHP -= damage;
-
-        // Update HP UI
-        hpBar.fillAmount = currHP / 100f;
-
-        // Death
-        if (currHP <= 0)
-        {
-            currHP = 0;
-
-            // This prevent die several times
-            if (!isDead)
-            {
-                Die();
-                isDead = true;
-            }
-        }
-    }
-
-    public bool IsDead()
-    {
-        return isDead;
     }
 }

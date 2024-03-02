@@ -9,7 +9,7 @@ public class DamageTextSpawner : MonoBehaviour
 
     public void Spawn(int damage)
     {
-        DamageText _damageText = Instantiate<DamageText>(damageTextPrefab, transform.parent);
+        DamageText _damageText = Instantiate(damageTextPrefab, transform.parent);
         _damageText.UpdateDamageText(damage);
     }
 }

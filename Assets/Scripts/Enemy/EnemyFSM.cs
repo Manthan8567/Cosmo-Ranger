@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
     [SerializeField] private Transform target;
 
-    private float chaseRadius = 7;
-    private float chaseSpeed = 0.8f;
+    private NavMeshAgent agent;
 
-    private float patrolSpeed = 1.5f;
+    private float chaseRadius = 7;
 
     private float attackRadius = 1.5f;
     private float attackCoolTime = 2;
+
+    private float distanceBetweenTarget;
 
     private EnemyState currentState = EnemyState.IDLE;
     private Vector3 initialPosition;
@@ -24,11 +26,15 @@ public class EnemyFSM : MonoBehaviour
     void Awake()
     {
         initialPosition = this.transform.position;
+
         animator = this.GetComponent<Animator>();
+        agent = this.GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
+        distanceBetweenTarget = Vector3.Distance(this.transform.position, target.position);
+
         switch (currentState)
         {
             case EnemyState.IDLE:
@@ -52,11 +58,9 @@ public class EnemyFSM : MonoBehaviour
     public void Idle()
     {
         // Transition (IDLE -> CHASE)
-        float distance = Vector3.Distance(this.transform.position, target.position);
-
         this.animator.SetBool("isWalking", false);
 
-        if (distance < chaseRadius)
+        if (distanceBetweenTarget < chaseRadius)
         {
             currentState = EnemyState.CHASE;
         }
@@ -65,13 +69,12 @@ public class EnemyFSM : MonoBehaviour
     public void Patrol()
     {
         // Action
-        this.transform.position = Vector3.MoveTowards(this.transform.position, initialPosition, patrolSpeed * Time.deltaTime);
-        this.transform.LookAt(initialPosition);
+        agent.SetDestination(initialPosition);
 
         // Transition (PATROL -> IDLE)
-        float distance = Vector3.Distance(this.transform.position, initialPosition);
+        float distanceBetweenInitPos = Vector3.Distance(this.transform.position, initialPosition);
 
-        if (distance < 0.1f)
+        if (distanceBetweenInitPos < 0.1f)
         {
             this.transform.position = initialPosition;
             currentState = EnemyState.IDLE;
@@ -81,21 +84,18 @@ public class EnemyFSM : MonoBehaviour
     public void Chase()
     {
         // Action
-        this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, chaseSpeed * Time.deltaTime);
-        this.transform.LookAt(target);
+        agent.SetDestination(target.position);
 
         this.animator.SetBool("isWalking", true);      
 
         // Transition (CHASE -> ATTACK / PATROL)
-        float distance = Vector3.Distance(this.transform.position, target.position);
-
-        if (distance < attackRadius)
+        if (distanceBetweenTarget < attackRadius)
         {
             currentState = EnemyState.ATTACK;
             this.animator.SetBool("isWalking", false);
         }
 
-        if (distance > chaseRadius)
+        if (distanceBetweenTarget > chaseRadius)
         {
             currentState = EnemyState.PATROL;
         }
@@ -107,9 +107,7 @@ public class EnemyFSM : MonoBehaviour
         GetComponent<EnemyCombat>().CheckAttackCondition(AttackType.PUNCH, attackRadius, attackCoolTime);
 
         // Transition (ATTACK -> CHASE)
-        float distance = Vector3.Distance(this.transform.position, target.position);
-
-        if (distance > attackRadius)
+        if (distanceBetweenTarget > attackRadius)
         {
             currentState = EnemyState.CHASE;
         }

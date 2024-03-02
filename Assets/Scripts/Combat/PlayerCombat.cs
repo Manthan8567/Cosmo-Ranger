@@ -10,18 +10,11 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour, IFightable
 {
-    [SerializeField] Image hpBar;
     [SerializeField] Projectile fireball;
     [SerializeField] Transform rightHandTransform;
 
-    EnemyCombat target;
+    newHealth target;
     Animator _animator;
-    newPlayerMovement _newPlayerMovement;
-
-    public UnityEvent<int> OnTakeDamage;
-
-    int maxHP = 100;
-    int currHP;
 
     float punchRadius = 3;
     float punchCoolTime = 1.5f;
@@ -32,15 +25,10 @@ public class PlayerCombat : MonoBehaviour, IFightable
 
     float timeSinceAttack = 2;
 
-    bool isDead = false;
-
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _newPlayerMovement = GetComponent<newPlayerMovement>();
-
-        currHP = maxHP;
     }
 
     private void Update()
@@ -67,7 +55,7 @@ public class PlayerCombat : MonoBehaviour, IFightable
 
         if (Physics.Raycast(ray, out RaycastHit hit, attackRadius, LayerMask.GetMask("Enemy")))
         {
-            target = hit.transform.GetComponent<EnemyCombat>();
+            target = hit.transform.GetComponent<newHealth>();
 
             if (timeSinceAttack > attackCoolTime)
             {
@@ -90,12 +78,12 @@ public class PlayerCombat : MonoBehaviour, IFightable
         timeSinceAttack = 0;
     }
 
-    // Animation event (Punch)
+    // Animation(Punch) event
     private void Hit()
     {
         AudioManager.Singleton.PlaySoundEffect("PlayerPunch");
 
-        target.GetComponent<EnemyCombat>().TakeDamage(punchDamage);
+        target.TakeDamage(punchDamage);
     }
 
     public void ThrowFireball()
@@ -106,13 +94,13 @@ public class PlayerCombat : MonoBehaviour, IFightable
         timeSinceAttack = 0;
     }
 
-    // Animation event
+    // Animation(Fireball) event
     private void StartThrowing()
     {
         this.transform.LookAt(target.transform);
     }
 
-    // Animation event
+    // Animation(Fireball) event
     private void Throw()
     {
         this.transform.LookAt(target.transform);
@@ -121,43 +109,5 @@ public class PlayerCombat : MonoBehaviour, IFightable
         tempProjectile.SetTarget(target);
 
         AudioManager.Singleton.PlaySoundEffect("Fireball");
-    }
-
-    public void TakeDamage(int damage)
-    {
-        OnTakeDamage?.Invoke(damage);
-
-        currHP -= damage;
-
-        // Update HP UI
-        hpBar.fillAmount = currHP / 100f;
-
-        // Death
-        if (currHP <= 0)
-        {
-            currHP = 0;
-
-            // This prevent die several times
-            if (!isDead)
-            {
-                Die();
-                isDead = true;
-            }
-        }
-    }
-
-    public void Die()
-    {
-        _animator.SetTrigger("Die");
-
-        AudioManager.Singleton.PlaySoundEffect("PlayerDeath");
-
-        // Player cannot move
-        _newPlayerMovement.enabled = false;
-    }
-
-    public bool IsDead()
-    {
-        return isDead;
     }
 }

@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] float speed = 3;
 
-    EnemyCombat target = null;
+    newHealth target = null;
 
     int fireballDamage = 30;
 
@@ -16,18 +16,18 @@ public class Projectile : MonoBehaviour
         MoveToTarget(target);
     }
 
-    public void SetTarget(EnemyCombat target)
+    public void SetTarget(newHealth target)
     {
         this.target = target;
     }
 
-    public void MoveToTarget(EnemyCombat target)
+    public void MoveToTarget(newHealth target)
     {
         transform.LookAt(GetAimingPos(target));
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    public Vector3 GetAimingPos(EnemyCombat target)
+    public Vector3 GetAimingPos(newHealth target)
     {
         if (target == null)
         {
@@ -42,9 +42,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyCombat enemy = other.GetComponent<EnemyCombat>();
+        newHealth enemy = other.GetComponent<newHealth>();
 
-        if (enemy != null)
+        if (enemy != null && enemy.CompareTag("Enemy"))
         {
             enemy.TakeDamage(fireballDamage);
 
