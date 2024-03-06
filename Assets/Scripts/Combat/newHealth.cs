@@ -11,12 +11,11 @@ public class newHealth : MonoBehaviour
     [SerializeField] UnityEvent<int> OnTakeDamage;
     [SerializeField] UnityEvent<bool> OnDie;
     [SerializeField] GameObject[] dropItems; // This is for enemies
+    [SerializeField] float maxHP = 100;
 
     Animator _animator;
-    EnemyFSM _enemyFSM;
 
-    int maxHP = 100;
-    int currHP;
+    float currHP;
 
     public bool IsDead { get; private set; }
 
@@ -33,7 +32,7 @@ public class newHealth : MonoBehaviour
         currHP -= damage;
 
         // Update HP UI
-        hpBar.fillAmount = currHP / 100f;
+        hpBar.fillAmount = currHP / maxHP;
 
         // Death
         if (currHP <= 0)

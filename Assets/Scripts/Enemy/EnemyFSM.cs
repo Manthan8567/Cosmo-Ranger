@@ -10,7 +10,7 @@ public class EnemyFSM : MonoBehaviour
 
     private NavMeshAgent agent;
 
-    private float chaseRadius = 7;
+    private float chaseRadius = 5;
 
     private float attackRadius = 1.5f;
     private float attackCoolTime = 2;
@@ -57,9 +57,10 @@ public class EnemyFSM : MonoBehaviour
 
     public void Idle()
     {
-        // Transition (IDLE -> CHASE)
+        // Action
         this.animator.SetBool("isWalking", false);
 
+        // Transition (IDLE -> CHASE)
         if (distanceBetweenTarget < chaseRadius)
         {
             currentState = EnemyState.CHASE;
@@ -74,10 +75,17 @@ public class EnemyFSM : MonoBehaviour
         // Transition (PATROL -> IDLE)
         float distanceBetweenInitPos = Vector3.Distance(this.transform.position, initialPosition);
 
-        if (distanceBetweenInitPos < 0.1f)
+        if (distanceBetweenInitPos < 2)
         {
-            this.transform.position = initialPosition;
+            agent.SetDestination(initialPosition);
+
             currentState = EnemyState.IDLE;
+        }
+
+        // Transition (PATROL -> Chase)
+        if (distanceBetweenTarget < chaseRadius)
+        {
+            currentState = EnemyState.CHASE;
         }
     }
 

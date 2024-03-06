@@ -8,10 +8,9 @@ using static CursorManager;
 public class EnemyCombat : MonoBehaviour, IFightable
 {
     [SerializeField] private newHealth target;
+    [SerializeField] private int attackDamage = 10;
 
     Animator _animator;
-
-    private int attackDamage = 10;
 
     private float timeSinceLastAttack;
 
