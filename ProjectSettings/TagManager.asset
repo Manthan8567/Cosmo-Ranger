@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - NPC
+  - Ragdoll
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Ragdoll
   - 
   - 
   - 
