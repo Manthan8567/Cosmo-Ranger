@@ -6,8 +6,8 @@ using UnityEngine.Playables;
 
 public class CinematicTrigger : MonoBehaviour
 {
-    [SerializeField] private InputManager _inputManager;
     [SerializeField] private GameObject player;
+
     private PlayableDirector playableDirector;
 
     private bool isPlayed = false;
@@ -26,9 +26,10 @@ public class CinematicTrigger : MonoBehaviour
         if (other.tag == "Player" && isPlayed == false)
         {
             // Player cannot move while the cinematic is playing
-            _inputManager.enabled = false;
+            player.GetComponent<newPlayerMovement>().enabled = false;
             // This prevents player sliding
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;  
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.GetComponent<Animator>().SetFloat("Speed", 0);
 
             playableDirector.Play();
             isPlayed = true;
@@ -43,6 +44,6 @@ public class CinematicTrigger : MonoBehaviour
         yield return new WaitForSeconds(cinematicPlayTime);
 
         // Player can move again after the cinematic ends
-        _inputManager.enabled = true;
+        player.GetComponent<newPlayerMovement>().enabled = true;
     }
 }
