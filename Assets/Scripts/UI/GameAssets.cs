@@ -18,4 +18,10 @@ public class GameAssets : MonoBehaviour {
 
     public Transform pfChatBubble;
 
+
+    public Sprite armorSprite;
+    public Sprite swordSprite;
+    public Sprite healthPotionSprite;
+
+
 }
