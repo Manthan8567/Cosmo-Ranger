@@ -10,7 +10,7 @@ public class Diamonds : MonoBehaviour
         {
             AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
 
-            PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
+            Player playerInventory = other.GetComponent<Player>();
 
             if (playerInventory != null)
             {

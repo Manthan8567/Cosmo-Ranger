@@ -6,7 +6,7 @@ public class SpaceshipInteract : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
     [SerializeField] private GameObject askRideUI;
-    [SerializeField] PlayerInventory _playerInventory;
+    [SerializeField] Player _playerInventory;
     [SerializeField] private Transform chatBubblePos;
 
     private string chatBubbleText = "Bring more diamonds!";

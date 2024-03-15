@@ -21,8 +21,8 @@ public class UI_shop : MonoBehaviour
     private void Start()
     {
         CreateItemButton(Item.ItemType.Armor, Item.GetSprite(Item.ItemType.Armor), "Armor", Item.GetCost(Item.ItemType.Armor),0);
-        CreateItemButton(Item.ItemType.Sword,Item.GetSprite(Item.ItemType.Sword), "Sword", Item.GetCost(Item.ItemType.Armor), 1);
-        CreateItemButton(Item.ItemType.HealthPotion, Item.GetSprite(Item.ItemType.HealthPotion), "Potion", Item.GetCost(Item.ItemType.Armor), 2);
+        CreateItemButton(Item.ItemType.Sword,Item.GetSprite(Item.ItemType.Sword), "Sword", Item.GetCost(Item.ItemType.Sword), 1);
+        CreateItemButton(Item.ItemType.HealthPotion, Item.GetSprite(Item.ItemType.HealthPotion), "Potion", Item.GetCost(Item.ItemType.HealthPotion), 2);
 
         Hide();
     }
@@ -50,7 +50,12 @@ public class UI_shop : MonoBehaviour
 
     private void TryBuyItem(Item.ItemType itemType)
     {
-        shopCustomer.BoughtItem(itemType);
+        if (shopCustomer.TrySpendDiamondAmount(Item.GetCost(itemType)))
+        {
+            //can afford the cost
+            shopCustomer.BoughtItem(itemType);
+        }
+        
     }
 
     public void Show(IShopCustomer shopCustomer)
