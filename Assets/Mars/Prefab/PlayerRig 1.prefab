@@ -3613,6 +3613,7 @@ MonoBehaviour:
     <Force>k__BackingField: 15
     <Damage>k__BackingField: 10
     <Knockback>k__BackingField: 5
+    <ExperiencePoints>k__BackingField: 20
   - <AnimationName>k__BackingField: attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
@@ -3621,6 +3622,7 @@ MonoBehaviour:
     <Force>k__BackingField: 15
     <Damage>k__BackingField: 15
     <Knockback>k__BackingField: 10
+    <ExperiencePoints>k__BackingField: 20
   - <AnimationName>k__BackingField: attack3
     <TransitionDuration>k__BackingField: 0.2
     <ComboStateIndex>k__BackingField: -1
@@ -3629,6 +3631,7 @@ MonoBehaviour:
     <Force>k__BackingField: 25
     <Damage>k__BackingField: 25
     <Knockback>k__BackingField: 15
+    <ExperiencePoints>k__BackingField: 20
 --- !u!114 &149416885506569676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4414,6 +4417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 6835503775350678918}
+  damage: 0
 --- !u!54 &8813762063826672766
 Rigidbody:
   m_ObjectHideFlags: 0

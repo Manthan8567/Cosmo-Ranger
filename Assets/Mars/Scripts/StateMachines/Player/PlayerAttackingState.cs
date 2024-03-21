@@ -8,17 +8,17 @@ public class PlayerAttackingState : PlayerBaseState
     private float previousFrameTime;
     private bool alreadyAppliedForce;
 
-    private Attack attack;
+    private Attack currentAttack; // Use a more descriptive name
 
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
     {
-        attack = stateMachine.Attacks[attackIndex];
+        currentAttack = stateMachine.Attacks[attackIndex]; // Access Attack data
     }
 
     public override void Enter()
     {
-        stateMachine.Weapon.SetAttack(attack.Damage, attack.Knockback);
-        stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
+        stateMachine.Weapon.SetAttack(currentAttack.Damage, currentAttack.Knockback);
+        stateMachine.Animator.CrossFadeInFixedTime(currentAttack.AnimationName, currentAttack.TransitionDuration);
     }
 
     public override void Tick(float deltaTime)
@@ -31,7 +31,7 @@ public class PlayerAttackingState : PlayerBaseState
 
         if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
         {
-            if (normalizedTime >= attack.ForceTime)
+            if (normalizedTime >= currentAttack.ForceTime)
             {
                 TryApplyForce();
             }
@@ -63,16 +63,14 @@ public class PlayerAttackingState : PlayerBaseState
 
     private void TryComboAttack(float normalizedTime)
     {
-        if (attack.ComboStateIndex == -1) { return; }
+        if (currentAttack.ComboStateIndex == -1) { return; }
 
-        if (normalizedTime < attack.ComboAttackTime) { return; }
+        if (normalizedTime < currentAttack.ComboAttackTime) { return; }
 
-        stateMachine.SwitchState
-        (
-            new PlayerAttackingState
-            (
+        stateMachine.SwitchState(
+            new PlayerAttackingState(
                 stateMachine,
-                attack.ComboStateIndex
+                currentAttack.ComboStateIndex
             )
         );
     }
@@ -81,8 +79,11 @@ public class PlayerAttackingState : PlayerBaseState
     {
         if (alreadyAppliedForce) { return; }
 
-        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * currentAttack.Force);
+        Debug.Log($"Experience Gained: {currentAttack.ExperiencePoints}"); // Add debug log
+        stateMachine.AddExperience(currentAttack.ExperiencePoints); // Add experience to player
 
         alreadyAppliedForce = true;
     }
+
 }

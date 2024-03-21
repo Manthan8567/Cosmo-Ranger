@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
-    public void SetInvunerable(bool isInvunerable)
+    public void SetInvulnerable(bool isInvunerable)
     {
         this.isInvunerable = isInvunerable;
     }
@@ -41,5 +41,11 @@ public class Health : MonoBehaviour
         }
 
         Debug.Log(health);
+    }
+
+    public void RestoreHealth()
+    {
+        health = maxHealth; // Set health back to maximum
+        Debug.Log($"Health restored to full: {health}"); // Log for debugging
     }
 }
