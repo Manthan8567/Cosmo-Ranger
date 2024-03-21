@@ -12,7 +12,7 @@ public class PlayerBlockingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Health.SetInvulnerable(true);
+        stateMachine.Health.SetInvunerable(true);
         stateMachine.Animator.CrossFadeInFixedTime(BlockHash, CrossFadeDuration);
     }
 
@@ -34,6 +34,6 @@ public class PlayerBlockingState : PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.Health.SetInvulnerable(false);
+        stateMachine.Health.SetInvunerable(false);
     }
 }

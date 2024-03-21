@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
-    public void SetInvulnerable(bool isInvunerable)
+    public void SetInvunerable(bool isInvunerable)
     {
         this.isInvunerable = isInvunerable;
     }
@@ -43,9 +43,13 @@ public class Health : MonoBehaviour
         Debug.Log(health);
     }
 
-    public void RestoreHealth()
+    // Created public reference of health and maxhealth to call them upon Enemy death to restore max health 
+    public void Heal(int healAmount)
     {
-        health = maxHealth; // Set health back to maximum
-        Debug.Log($"Health restored to full: {health}"); // Log for debugging
+        health = Mathf.Min(health + healAmount, maxHealth); // Limit health to max
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

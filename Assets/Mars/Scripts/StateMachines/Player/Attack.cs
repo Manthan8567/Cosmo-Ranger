@@ -14,7 +14,6 @@ public class Attack
     [field: SerializeField] public float Force { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public float Knockback { get; private set; }
-    [field: SerializeField] public int ExperiencePoints { get; private set; } // Added field for experience points
 
     public void IncreaseDamage(int damageIncrease)
     {

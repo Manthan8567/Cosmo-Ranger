@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class ZzzLog : MonoBehaviour
 {
-    uint qsize = 5;  // number of messages to keep
+    uint qsize = 8;  // number of messages to keep
     Queue<string> myLogQueue = new Queue<string>();
     public Color logColor = Color.white;
     public int logFontSize = 14;
