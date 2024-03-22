@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class NPCInteractable : MonoBehaviour, IInteractable 
 {
-    [SerializeField] private DialogueManager _dialogueManager;
-    [SerializeField] private string interactText;
+    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private Transform chatBubblePos;
-    // NPC will have different voice
-    [SerializeField] private AudioClip voice;
-
-    private string chatBubbleText = "AHHHH! OUCH!";
+    [SerializeField] private AudioClip voice; // NPC will have different voices
+    [SerializeField] private string interactText;
+    [SerializeField] private string chatBubbleText = "Write your own text in inspector";
 
 
     public void Interact(Transform interactorTransform) 
     {
         AudioManager.Singleton.PlaySoundEffect(voice);
 
-        _dialogueManager.StartDialogue();
+        dialogueManager.StartDialogue();
     }
 
     private void OnCollisionEnter(Collision collision)

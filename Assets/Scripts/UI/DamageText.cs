@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class DamageText : MonoBehaviour
 {
     public void UpdateDamageText(int damage)
     {
-        GetComponent<Text>().text = damage.ToString();
+        GetComponent<TextMeshProUGUI>().text = damage.ToString();
     }
 
     // This will be called by DamageText-Animation-Event

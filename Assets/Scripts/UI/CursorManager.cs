@@ -6,8 +6,7 @@ public class CursorManager : MonoBehaviour
 {
     [SerializeField] CursorMapping[] cursorMappings;
 
-    // This should be the same as enemy chase & player spell radius
-    private float targetEnemyRadius = 7;
+    private float targetEnemyRadius = 10;
 
     public enum CursorType
     {
@@ -27,16 +26,13 @@ public class CursorManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, targetEnemyRadius))
+        if (Physics.Raycast(ray, out RaycastHit hit, targetEnemyRadius, LayerMask.GetMask("Enemy")))
         {
-            if (hit.transform.CompareTag("Enemy"))
-            {
-                SetCursor(CursorType.TARGETENEMY);
-            }
-            else
-            {
-                SetCursor(CursorType.DEFAULT);
-            }
+            SetCursor(CursorType.TARGETENEMY);
+        }
+        else
+        {
+            SetCursor(CursorType.DEFAULT);
         }
     }
 

@@ -6,17 +6,13 @@ public class Diamonds : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Player playerInventory = other.GetComponent<Player>();
+
+        if (playerInventory != null)
         {
             AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
-
-            Player playerInventory = other.GetComponent<Player>();
-
-            if (playerInventory != null)
-            {
-                playerInventory.DiamondCollected();
-                gameObject.SetActive(false);
-            }
+            playerInventory.DiamondCollected();
+            gameObject.SetActive(false);
         }
     }
 }

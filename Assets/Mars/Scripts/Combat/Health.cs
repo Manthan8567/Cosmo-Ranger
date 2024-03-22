@@ -1,23 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100;
+    private float currHealth;
 
-    private int health;
     private bool isInvunerable;
 
-    public event Action OnTakeDamage;
+    public event Action<int> OnTakeDamage;
     public event Action OnDie;
 
-    public bool IsDead => health == 0;
+    public float MaxHealth { get => maxHealth; }
+    public float CurrHealth { get => currHealth; }
 
-    private void Start()
+    public bool IsDead => currHealth == 0;
+
+    private void Awake()
     {
-        health = maxHealth;
+        currHealth = maxHealth;
     }
 
     public void SetInvunerable(bool isInvunerable)
@@ -27,29 +31,25 @@ public class Health : MonoBehaviour
 
     public void DealDamage(int damage)
     {
-        if (health == 0) { return; }
+        if (currHealth == 0) { return; }
 
         if (isInvunerable) { return; }
 
-        health = Mathf.Max(health - damage, 0);
+        currHealth = Mathf.Max(currHealth - damage, 0);
 
-        OnTakeDamage?.Invoke();
+        OnTakeDamage?.Invoke(damage);
 
-        if (health == 0)
+        if (currHealth == 0)
         {
             OnDie?.Invoke();
         }
 
-        Debug.Log(health);
+        Debug.Log(currHealth);
     }
 
     // Created public reference of health and maxhealth to call them upon Enemy death to restore max health 
-    public void Heal(int healAmount)
+    public void Heal(float healAmount)
     {
-        health = Mathf.Min(health + healAmount, maxHealth); // Limit health to max
-    }
-    public int GetMaxHealth()
-    {
-        return maxHealth;
+        currHealth = Mathf.Min(currHealth + healAmount, maxHealth); // Limit health to max
     }
 }

@@ -32,7 +32,7 @@ public class ExperienceManager : MonoBehaviour
         // Restore max health upon leveling up 
         if (playerHealth != null)
         {
-            playerHealth.Heal(playerHealth.GetMaxHealth()); // Restore health using public method from Health class
+            playerHealth.Heal(playerHealth.MaxHealth); // Restore health using public method from Health class
         }
 
         // Update attack damage upon leveling up
@@ -44,7 +44,7 @@ public class ExperienceManager : MonoBehaviour
         Debug.Log($"Leveled Up! Current Level: {currentLevel}");
         Debug.Log($"Current Experience: {currentExperience}");
         Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
-        Debug.Log($"Health fully restored to: {playerHealth.GetMaxHealth()}"); // Debug message for health restoration
+        Debug.Log($"Health fully restored to: {playerHealth.MaxHealth}"); // Debug message for health restoration
     }
 
 
