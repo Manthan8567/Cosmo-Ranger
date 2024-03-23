@@ -10,6 +10,21 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private string interactText;
     [SerializeField] private string chatBubbleText = "Write your own text in inspector";
 
+    private float chatBubbleCoolTime = 10f;
+    private float timeSinceChatBubblePopUp = 0f;
+
+
+    private void Update()
+    {
+        timeSinceChatBubblePopUp += Time.deltaTime;
+
+        if (timeSinceChatBubblePopUp > chatBubbleCoolTime)
+        {
+            PopUpChatBubble();
+
+            timeSinceChatBubblePopUp = 0;
+        }
+    }
 
     public void Interact(Transform interactorTransform) 
     {
@@ -18,12 +33,9 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         dialogueManager.StartDialogue();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void PopUpChatBubble()
     {
-        if (collision.transform.CompareTag("Player"))
-        {
-            ChatBubble3D.Create(this.transform, chatBubblePos.localPosition, ChatBubble3D.IconType.Happy, chatBubbleText);
-        }
+        ChatBubble3D.Create(this.transform, chatBubblePos.localPosition, ChatBubble3D.IconType.Happy, chatBubbleText);
     }
 
     public string GetInteractText() 

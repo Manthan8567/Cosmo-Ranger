@@ -44,8 +44,6 @@ public class DialogueManager : MonoBehaviour
         textIndex = 0;
         dialogueWindow.SetActive(true);
 
-        player.GetComponent<Animator>().SetFloat("Speed", 0);
-
         NextDialogue();
     }
 

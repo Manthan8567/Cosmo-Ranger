@@ -6,15 +6,20 @@ using UnityEngine;
 public class ExperienceManager : MonoBehaviour
 {
     public Health playerHealth; // Reference to the Health component
-    public int currentLevel = 1;
-    public int currentExperience = 0;
-    public int expForNextLevel = 100;
-
     public PlayerStateMachine playerStateMachine; // Get a Reference to the PlayerStateMachine to update attack damage
 
-    public void AddExperience(int experience)
+    public int currentLevel = 1;
+    public float currentExperience = 0;
+    public float expForNextLevel = 100;
+
+    public event Action OnGainExperience;
+    public event Action OnLevelUp;
+
+    public void AddExperience(float experience)
     {
         currentExperience += experience;
+
+        OnGainExperience?.Invoke();
 
         // Check if level up is required
         if (currentExperience >= expForNextLevel)
@@ -45,6 +50,8 @@ public class ExperienceManager : MonoBehaviour
         Debug.Log($"Current Experience: {currentExperience}");
         Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
         Debug.Log($"Health fully restored to: {playerHealth.MaxHealth}"); // Debug message for health restoration
+
+        OnLevelUp?.Invoke();
     }
 
 

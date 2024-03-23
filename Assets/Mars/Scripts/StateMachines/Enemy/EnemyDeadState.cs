@@ -6,7 +6,7 @@ public class EnemyDeadState : EnemyBaseState
 {
     public EnemyDeadState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
-    private int experienceValue = 50; // Set experience points awarded on death 
+    private float experienceValue = 50; // Set experience points awarded on death 
 
     public override void Enter()
     {
@@ -23,7 +23,6 @@ public class EnemyDeadState : EnemyBaseState
             if (experienceManager != null)
             {
                 experienceManager.AddExperience(experienceValue);
-
             }
         }
     }

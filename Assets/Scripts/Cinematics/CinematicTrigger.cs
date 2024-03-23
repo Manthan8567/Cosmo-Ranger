@@ -23,7 +23,7 @@ public class CinematicTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && isPlayed == false)
+        if (isPlayed == false)
         {
             // Player cannot move while the cinematic is playing
             player.GetComponent<newPlayerMovement>().enabled = false;
