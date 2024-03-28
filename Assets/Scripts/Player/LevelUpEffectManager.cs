@@ -5,8 +5,6 @@ public class LevelUpEffectManager : MonoBehaviour
 {
     private ExperienceManager experienceManager;
 
-    private string levelUpSound = "LevelUp";
-
     void Start()
     {
         experienceManager = GameObject.FindWithTag("ExperienceManager").GetComponent<ExperienceManager>();
@@ -17,7 +15,5 @@ public class LevelUpEffectManager : MonoBehaviour
     public void PlayLevelUpEffect()
     {
         this.GetComponent<ParticleSystem>().Play();
-
-        AudioManager.Singleton.PlaySoundEffect(levelUpSound);
     }
 }

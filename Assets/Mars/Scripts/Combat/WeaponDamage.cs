@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +10,6 @@ public class WeaponDamage : MonoBehaviour
     private float knockback;
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
-
 
     private void OnEnable()
     {

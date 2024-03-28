@@ -297,17 +297,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3613129570347687357, guid: 9bae5409f1f165743a7e13fcc51bc4b5, type: 3}
   m_PrefabInstance: {fileID: 391621457}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &79661195 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6214806846645696143, guid: 2241b31309228f442b862ee6bf303b20, type: 3}
-  m_PrefabInstance: {fileID: 8268194492006543861}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529c89dbb1666fd40a8f69f13fdf8e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &94343777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1689,8 +1678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - soundName: Mr.DoTalk
-    audioClip: {fileID: 8300000, guid: caf50f14bdc2840ffb0bfa66d5285331, type: 3}
   - soundName: SpaceshipTalk
     audioClip: {fileID: 8300000, guid: 6b5a6bade430446bdb1277645ae68178, type: 3}
   - soundName: CollectDiamond
@@ -1699,18 +1686,18 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: ceede7a829d41470a86526620500b878, type: 3}
   - soundName: Footstep
     audioClip: {fileID: 8300000, guid: 22b5b26c3429f42c482afafb562afc2a, type: 3}
-  - soundName: EnemyTakeDamage
-    audioClip: {fileID: 8300000, guid: d73b73743ea434d9b98c5c0b04b51e3a, type: 3}
-  - soundName: PlayerTakeDamage
-    audioClip: {fileID: 8300000, guid: 9570aaffe63ad4ffbac4fe2b193f8cbb, type: 3}
   - soundName: PlayerDeath
     audioClip: {fileID: 8300000, guid: be8f35d0ffa544fde837064d01ad7063, type: 3}
-  - soundName: EnemyDeath
+  - soundName: SandZombieAttack
+    audioClip: {fileID: 8300000, guid: 9570aaffe63ad4ffbac4fe2b193f8cbb, type: 3}
+  - soundName: PlayerPunch
+    audioClip: {fileID: 8300000, guid: d73b73743ea434d9b98c5c0b04b51e3a, type: 3}
+  - soundName: SandZombieDeath
     audioClip: {fileID: 8300000, guid: 637162f47796b44ad8b65114350467e3, type: 3}
+  - soundName: Mr.DoTalk
+    audioClip: {fileID: 8300000, guid: caf50f14bdc2840ffb0bfa66d5285331, type: 3}
   - soundName: HitFireball
     audioClip: {fileID: 8300000, guid: d9fbd40df37d34b57a63581db411006c, type: 3}
-  - soundName: LevelUp
-    audioClip: {fileID: 8300000, guid: b2204f47b903e413e8e8e442d60a8ca1, type: 3}
 --- !u!82 &425078250
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1718,7 +1705,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425078246}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b051f61e6b54bb43b57ee3437cea927, type: 3}
@@ -2361,19 +2348,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4534564288184854803, guid: 1231e8376d9960c4caf29ce9624b8eaa, type: 3}
   m_PrefabInstance: {fileID: 3844324704952540745}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &561577578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561577524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a99ab28f8bbf243a7311c4105ae9c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experienceManager: {fileID: 2124698034}
 --- !u!1001 &580568912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5541,17 +5515,6 @@ MonoBehaviour:
   health: {fileID: 1065077503}
   hpBar: {fileID: 970611643}
   hpText: {fileID: 1324711591}
---- !u!114 &1228858169 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6214806846645696143, guid: 2241b31309228f442b862ee6bf303b20, type: 3}
-  m_PrefabInstance: {fileID: 1892129355}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529c89dbb1666fd40a8f69f13fdf8e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1248669442
 GameObject:
   m_ObjectHideFlags: 0
@@ -8608,10 +8571,6 @@ PrefabInstance:
       propertyPath: hpText
       value: 
       objectReference: {fileID: 1324711591}
-    - target: {fileID: 1381681684916286360, guid: 2241b31309228f442b862ee6bf303b20, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 1228858169}
     - target: {fileID: 2187905084537863680, guid: 2241b31309228f442b862ee6bf303b20, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.82
@@ -11160,10 +11119,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4534564288184854803, guid: 1231e8376d9960c4caf29ce9624b8eaa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1086584932}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3733877688915163405, guid: 1231e8376d9960c4caf29ce9624b8eaa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 561577578}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1231e8376d9960c4caf29ce9624b8eaa, type: 3}
 --- !u!1001 &3904243461483692192
 PrefabInstance:
@@ -11331,10 +11287,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1079868323}
     m_Modifications:
-    - target: {fileID: 1381681684916286360, guid: 2241b31309228f442b862ee6bf303b20, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 79661195}
     - target: {fileID: 2187905084537863680, guid: 2241b31309228f442b862ee6bf303b20, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.75

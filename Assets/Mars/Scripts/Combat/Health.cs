@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
-
     private float currHealth;
 
     private bool isInvunerable;
