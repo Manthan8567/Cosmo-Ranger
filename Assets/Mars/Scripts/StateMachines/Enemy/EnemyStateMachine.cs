@@ -13,8 +13,10 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Target Target { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+    [field: SerializeField] public PatrolPath PatrolPath { get; private set; }
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
+    [field: SerializeField] public float PatrolSpeed { get; private set; }
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
@@ -29,7 +31,7 @@ public class EnemyStateMachine : StateMachine
         Agent.updatePosition = false;
         Agent.updateRotation = false;
 
-        SwitchState(new EnemyIdleState(this));
+        SwitchState(new EnemyPatrolState(this));
     }
 
     private void OnEnable()
@@ -54,6 +56,7 @@ public class EnemyStateMachine : StateMachine
         SwitchState(new EnemyDeadState(this));
     }
 
+    // Chasing Range Gizmo
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

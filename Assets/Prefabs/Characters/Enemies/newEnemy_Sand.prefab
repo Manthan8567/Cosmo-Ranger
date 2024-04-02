@@ -175,6 +175,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 347287641066447515, guid: fd7f06c3b9db17c40b4e8d4b363914d3, type: 3}
+      propertyPath: <PatrolSpeed>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347287641066447515, guid: fd7f06c3b9db17c40b4e8d4b363914d3, type: 3}
       propertyPath: <AttackDamage>k__BackingField
       value: 10
       objectReference: {fileID: 0}
