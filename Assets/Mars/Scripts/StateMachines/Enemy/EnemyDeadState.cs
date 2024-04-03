@@ -10,6 +10,17 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
+        // Update total kills count
+        GameObject playerInfoUIObject = GameObject.FindWithTag("PlayerInfoUI");
+        if (playerInfoUIObject != null)
+        {
+            PlayerInfoUI playerInfoUI = playerInfoUIObject.GetComponent<PlayerInfoUI>();
+            if (playerInfoUI != null)
+            {
+                playerInfoUI.IncrementTotalKills();
+            }
+        }
+
         Debug.Log($"Enemy awarded {experienceValue.ToString()} experience points!");
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);

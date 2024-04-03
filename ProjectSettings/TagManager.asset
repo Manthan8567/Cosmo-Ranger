@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Ragdoll
   - ExperienceManager
+  - PlayerInfoUI
   layers:
   - Default
   - TransparentFX
