@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     private bool isInvunerable;
 
     public event Action<int> OnTakeDamage;
+    public event Action<int> OnHeal;
     public event Action OnDie;
 
     public float MaxHealth { get => maxHealth; }
@@ -43,13 +44,11 @@ public class Health : MonoBehaviour
         {
             OnDie?.Invoke();
         }
-
-        Debug.Log(currHealth);
     }
 
-    // Created public reference of health and maxhealth to call them upon Enemy death to restore max health 
     public void Heal(float healAmount)
     {
-        currHealth = Mathf.Min(currHealth + healAmount, maxHealth); // Limit health to max
+        currHealth = Mathf.Min(currHealth + healAmount, maxHealth);
+        OnHeal?.Invoke((int)healAmount);
     }
 }
