@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    [SerializeField] InputReader2 inputReader;
     [SerializeField] CursorMapping[] cursorMappings;
+
+    private PauseMenuManager pauseMenuManager;
 
     private float targetEnemyRadius = 10;
 
@@ -22,7 +25,36 @@ public class CursorManager : MonoBehaviour
         public Vector2 hotSpot;
     }
 
-    private void FixedUpdate()
+    private void Start()
+    {
+        pauseMenuManager = GetComponent<PauseMenuManager>();
+    }
+
+    private void Update()
+    {
+        if (inputReader.IsCursorOn)
+        {
+            TurnOnCursor();
+        }
+        else
+        {
+            TurnOffCursor();
+        }
+    }
+
+    private void TurnOffCursor()
+    {
+        Cursor.visible = false;
+    }
+
+    private void TurnOnCursor()
+    {
+        Cursor.visible = true;
+
+        DrawCursor();
+    }
+
+    private void DrawCursor()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

@@ -289,6 +289,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Cursor",
+            "id": "2771bb5f-3874-4c3f-8c8e-7555d0b5b997",
+            "actions": [
+                {
+                    "name": "Toggle",
+                    "type": "Button",
+                    "id": "0c6ce7de-fb62-44e0-a0f9-cf4295068a13",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3777c550-81ce-4046-9bfb-9bc80bbfbd4c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse & Keyboard",
+                    "action": "Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

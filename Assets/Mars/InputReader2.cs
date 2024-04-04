@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader2 : MonoBehaviour, Controls.IPlayerActions
+public class InputReader2 : MonoBehaviour, Controls.IPlayerActions, Controls.ICursorActions
 {
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
     public Vector2 MovementValue { get; private set; }
+
+    public bool IsCursorOn { get; private set; }
 
     public event Action JumpEvent;
     public event Action DodgeEvent;
@@ -21,8 +23,10 @@ public class InputReader2 : MonoBehaviour, Controls.IPlayerActions
     {
         controls = new Controls();
         controls.Player.SetCallbacks(this);
+        controls.Cursor.SetCallbacks(this);
 
         controls.Player.Enable();
+        controls.Cursor.Enable();
     }
 
     private void OnDestroy()
@@ -90,5 +94,13 @@ public class InputReader2 : MonoBehaviour, Controls.IPlayerActions
         {
             IsBlocking = false;
         }
+    }
+
+    // Cursor
+    public void OnToggle(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+
+        IsCursorOn = !IsCursorOn;
     }
 }

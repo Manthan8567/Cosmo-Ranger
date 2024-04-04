@@ -6,7 +6,7 @@ public class SpaceshipInteract : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
     [SerializeField] private GameObject askRideUI;
-    [SerializeField] Player _playerInventory;
+    [SerializeField] Player playerInventory;
     [SerializeField] private Transform chatBubblePos;
 
     private string chatBubbleText = "Bring more diamonds!";
@@ -23,7 +23,7 @@ public class SpaceshipInteract : MonoBehaviour, IInteractable
     {
         // If player has completed the task, ask to ride
         // 3 is for test. Should use the real value (totalDiamonds) after level design.
-        if (_playerInventory.NumberOfDiamonds >= diamondNeeded)
+        if (playerInventory.NumberOfDiamonds >= diamondNeeded)
         {
             askRideUI.SetActive(true);
 

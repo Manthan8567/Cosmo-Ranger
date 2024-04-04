@@ -311,6 +311,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Cursor"",
+            ""id"": ""2771bb5f-3874-4c3f-8c8e-7555d0b5b997"",
+            ""actions"": [
+                {
+                    ""name"": ""Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c6ce7de-fb62-44e0-a0f9-cf4295068a13"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3777c550-81ce-4046-9bfb-9bc80bbfbd4c"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -353,6 +381,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
+        // Cursor
+        m_Cursor = asset.FindActionMap("Cursor", throwIfNotFound: true);
+        m_Cursor_Toggle = m_Cursor.FindAction("Toggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -512,6 +543,52 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Cursor
+    private readonly InputActionMap m_Cursor;
+    private List<ICursorActions> m_CursorActionsCallbackInterfaces = new List<ICursorActions>();
+    private readonly InputAction m_Cursor_Toggle;
+    public struct CursorActions
+    {
+        private @Controls m_Wrapper;
+        public CursorActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Toggle => m_Wrapper.m_Cursor_Toggle;
+        public InputActionMap Get() { return m_Wrapper.m_Cursor; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CursorActions set) { return set.Get(); }
+        public void AddCallbacks(ICursorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CursorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CursorActionsCallbackInterfaces.Add(instance);
+            @Toggle.started += instance.OnToggle;
+            @Toggle.performed += instance.OnToggle;
+            @Toggle.canceled += instance.OnToggle;
+        }
+
+        private void UnregisterCallbacks(ICursorActions instance)
+        {
+            @Toggle.started -= instance.OnToggle;
+            @Toggle.performed -= instance.OnToggle;
+            @Toggle.canceled -= instance.OnToggle;
+        }
+
+        public void RemoveCallbacks(ICursorActions instance)
+        {
+            if (m_Wrapper.m_CursorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICursorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CursorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CursorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CursorActions @Cursor => new CursorActions(this);
     private int m_MouseKeyboardSchemeIndex = -1;
     public InputControlScheme MouseKeyboardScheme
     {
@@ -540,5 +617,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
+    }
+    public interface ICursorActions
+    {
+        void OnToggle(InputAction.CallbackContext context);
     }
 }

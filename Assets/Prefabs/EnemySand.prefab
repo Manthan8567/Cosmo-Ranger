@@ -1394,6 +1394,7 @@ GameObject:
   - component: {fileID: 1753770735373204555}
   - component: {fileID: 8649994333579677185}
   - component: {fileID: 7456506708844034712}
+  - component: {fileID: 7139897154593746988}
   m_Layer: 3
   m_Name: EnemySand
   m_TagString: Enemy
@@ -1409,7 +1410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091690318052386662}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 25.75, y: 0.29, z: -16.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1595,6 +1596,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519da4a46cca6e14c97648ef0532baba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7139897154593746988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091690318052386662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005651cf2da7a54409bfffaedfb4475b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 1000013656696560, guid: cd34118c604e29141afea74caecd70f2, type: 3}
+  - {fileID: 4916895879288537332, guid: e92732af86ad0c4419941dfccaaac64f, type: 3}
 --- !u!1 &2118057648887338962
 GameObject:
   m_ObjectHideFlags: 0
