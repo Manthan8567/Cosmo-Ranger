@@ -8112,7 +8112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069696835}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.022174679, y: -0.16998012, z: 0.0038259146, w: 0.9851905}
+  m_LocalRotation: {x: 0.022174679, y: -0.16998017, z: 0.003825916, w: 0.9851905}
   m_LocalPosition: {x: 35.224148, y: 1.7223251, z: -40.70921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8286,11 +8286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8253465488740965244, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.11959462
+      value: 0.11959459
       objectReference: {fileID: 0}
     - target: {fileID: 8253465488740965244, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.032779634
+      value: -0.032779627
       objectReference: {fileID: 0}
     - target: {fileID: 8834425679228467893, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8517,15 +8517,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6980588242598763464, guid: 4b288e2d64437824e9158d77e9fe4285, type: 3}
       propertyPath: rainbow.key0.b
-      value: 0.66291565
+      value: 0.8039216
       objectReference: {fileID: 0}
     - target: {fileID: 6980588242598763464, guid: 4b288e2d64437824e9158d77e9fe4285, type: 3}
       propertyPath: rainbow.key0.g
-      value: 0.8037735
+      value: 0.64565223
       objectReference: {fileID: 0}
     - target: {fileID: 6980588242598763464, guid: 4b288e2d64437824e9158d77e9fe4285, type: 3}
       propertyPath: rainbow.key0.r
-      value: 0.2775293
+      value: 0.2784314
       objectReference: {fileID: 0}
     - target: {fileID: 7452241489735381933, guid: 4b288e2d64437824e9158d77e9fe4285, type: 3}
       propertyPath: m_Name

@@ -9,39 +9,43 @@ public class ExpBarManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI expText;
     [SerializeField] TextMeshProUGUI levelText;
 
-    private ExperienceManager experienceManager;
-
 
     private void Start()
     {
-        experienceManager = GameObject.FindWithTag("ExperienceManager").GetComponent<ExperienceManager>();
-
         // Subscribe events
-        experienceManager.OnGainExperience += UpdateExpBar;
+        ExperienceManager.Singleton.OnGainExperience += UpdateExpBar;
 
-        experienceManager.OnLevelUp += UpdateExpBar;
-        experienceManager.OnLevelUp += UpdateLevelText;
+        ExperienceManager.Singleton.OnLevelUp += UpdateExpBar;
+        ExperienceManager.Singleton.OnLevelUp += UpdateLevelText;
 
         UpdateLevelText();
         UpdateExpBar();
     }
 
+    private void OnDisable()
+    {
+        ExperienceManager.Singleton.OnGainExperience -= UpdateExpBar;
+
+        ExperienceManager.Singleton.OnLevelUp -= UpdateExpBar;
+        ExperienceManager.Singleton.OnLevelUp -= UpdateLevelText;
+    }
+
     public void UpdateExpBar()
     {
-        expBar.fillAmount = experienceManager.currentExperience / experienceManager.expForNextLevel;
+        expBar.fillAmount = ExperienceManager.Singleton.currentExperience / ExperienceManager.Singleton.expForNextLevel;
 
         UpdateExpText();
     }
 
     private void UpdateExpText()
     {
-        string currExp = experienceManager.currentExperience.ToString();
-        string maxExp = experienceManager.expForNextLevel.ToString();
+        string currExp = ExperienceManager.Singleton.currentExperience.ToString();
+        string maxExp = ExperienceManager.Singleton.expForNextLevel.ToString();
         expText.text = currExp + "/" + maxExp;
     }
 
     public void UpdateLevelText()
     {
-        levelText.text = "Lv. " + experienceManager.currentLevel.ToString();
+        levelText.text = "Lv. " + ExperienceManager.Singleton.currentLevel.ToString();
     }
 }

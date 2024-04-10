@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueData currDialogue;
     private int textIndex = 0;
+    private bool isTalking = false;
 
 
     private void OnEnable()
@@ -33,15 +34,19 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isTalking)
         {
-            NextDialogue();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                NextDialogue();
+            }
+        }      
     }
 
     public void StartDialogue()
     {
         GameManager.Singleton.StopGame();
+        isTalking = true;
 
         textIndex = 0;
         dialogueWindow.SetActive(true);
@@ -82,5 +87,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         GameManager.Singleton.ResumeGame();
+
+        isTalking = false;
     }
 }

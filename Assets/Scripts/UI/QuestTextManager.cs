@@ -28,6 +28,8 @@ public class QuestTextManager : MonoBehaviour
     public void ToggleQuestProgressionText(bool isQuestDone)
     {
         questProgressionText.enabled = !isQuestDone;
+
+        Debug.Log("toggled");
     }
 
     public void UpdateQuestText(int currProgression)

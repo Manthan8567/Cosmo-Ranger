@@ -26,16 +26,7 @@ public class EnemyDeadState : EnemyBaseState
         stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Destroy(stateMachine.Target);
 
-        // Award experience points to the player
-        GameObject experienceManagerObject = GameObject.FindWithTag("ExperienceManager");
-        if (experienceManagerObject != null)
-        {
-            ExperienceManager experienceManager = experienceManagerObject.GetComponent<ExperienceManager>();
-            if (experienceManager != null)
-            {
-                experienceManager.AddExperience(experienceValue);
-            }
-        }
+        ExperienceManager.Singleton.AddExperience(experienceValue);
     }
 
     public override void Tick(float deltaTime) { }

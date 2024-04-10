@@ -4,13 +4,15 @@ using TMPro;
 public class LevelUpEffectManager : MonoBehaviour
 {
     public TextMeshProUGUI levelUpText; // Reference to your Text Mesh Pro UI element
-    private ExperienceManager experienceManager;
 
     void Start()
     {
-        experienceManager = GameObject.FindWithTag("ExperienceManager").GetComponent<ExperienceManager>();
+        ExperienceManager.Singleton.OnLevelUp += PlayLevelUpEffect;
+    }
 
-        experienceManager.OnLevelUp += PlayLevelUpEffect;
+    private void OnDisable()
+    {
+        ExperienceManager.Singleton.OnLevelUp -= PlayLevelUpEffect;
     }
 
     public void PlayLevelUpEffect()

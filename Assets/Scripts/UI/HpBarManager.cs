@@ -8,20 +8,23 @@ public class HpBarManager : MonoBehaviour
     [SerializeField] Image hpBar;
     [SerializeField] TextMeshProUGUI hpText;
 
-    private ExperienceManager experienceManager;
-
 
     void Start()
     {
-        experienceManager = GameObject.FindWithTag("ExperienceManager").GetComponent<ExperienceManager>();
-
-        experienceManager.OnLevelUp += FillHPBarFull;
+        ExperienceManager.Singleton.OnLevelUp += FillHPBarFull;
         health.OnTakeDamage += UpdateHPBar;
         health.OnDie += TurnOffHPBar;
 
         // When the game starts, update HP bar.
         // Parameter doesn't do anything here.
         UpdateHPBar(0);
+    }
+
+    private void OnDisable()
+    {
+        ExperienceManager.Singleton.OnLevelUp -= FillHPBarFull;
+        health.OnTakeDamage -= UpdateHPBar;
+        health.OnDie -= TurnOffHPBar;
     }
 
     public void FillHPBarFull()

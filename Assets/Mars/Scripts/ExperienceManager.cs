@@ -5,6 +5,23 @@ using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
+    #region Singleton
+    public static ExperienceManager Singleton;
+
+    private void Awake()
+    {
+        if (Singleton == null)
+        {
+            Singleton = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    #endregion
+
     public Health playerHealth; // Reference to the Health component
     public PlayerStateMachine playerStateMachine; // Get a Reference to the PlayerStateMachine to update attack damage
 
@@ -14,6 +31,7 @@ public class ExperienceManager : MonoBehaviour
 
     public event Action OnGainExperience;
     public event Action OnLevelUp;
+
 
     public void AddExperience(float experience)
     {
@@ -53,6 +71,4 @@ public class ExperienceManager : MonoBehaviour
 
         OnLevelUp?.Invoke();
     }
-
-
 }
