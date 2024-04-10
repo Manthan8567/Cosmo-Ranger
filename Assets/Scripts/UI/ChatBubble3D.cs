@@ -5,14 +5,14 @@ using TMPro;
 
 public class ChatBubble3D : MonoBehaviour {
 
-    public static void Create(Transform parent, Vector3 localPosition, IconType iconType, string text) 
+    public static void Create(Transform parent, Vector3 localPosition, IconType iconType, string text, float popUpTime = 6f) 
     {
         Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
         chatBubbleTransform.localPosition = localPosition;
 
         chatBubbleTransform.GetComponent<ChatBubble3D>().Setup(iconType, text);
 
-        Destroy(chatBubbleTransform.gameObject, 6f);
+        Destroy(chatBubbleTransform.gameObject, popUpTime);
     }
 
     public enum IconType {

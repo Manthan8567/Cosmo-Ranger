@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fa2fcb08c070545aa6bad9f2294e46, type: 3}
+  m_Name: Silverhead_QuestDone
+  m_EditorClassIdentifier: 
+  characterName: Silverhead
+  dialoguePhrase:
+  - Did you kill it?
+  - Thank you. I was really scared.
+  - By the way, Mr. Do sent SOS on B371 just now.
+  - You have to help him. We'll land on B371 soon.
+  - Get ready. If you're ready, go to the portal.

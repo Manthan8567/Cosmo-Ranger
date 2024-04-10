@@ -9,10 +9,15 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip voice; // NPC will have different voices
     [SerializeField] private string interactText;
     [SerializeField] private string chatBubbleText = "Write your own text in inspector";
+    [SerializeField] private float chatBubbleCoolTime = 10f;
+    [SerializeField] private float chatBubblePopUpTime = 6f;
 
-    private float chatBubbleCoolTime = 10f;
-    private float timeSinceChatBubblePopUp = 0f;
+    private float timeSinceChatBubblePopUp;
 
+    private void Start()
+    {
+        timeSinceChatBubblePopUp = chatBubbleCoolTime;
+    }
 
     private void Update()
     {
@@ -35,7 +40,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     private void PopUpChatBubble()
     {
-        ChatBubble3D.Create(this.transform, chatBubblePos.localPosition, ChatBubble3D.IconType.Happy, chatBubbleText);
+        ChatBubble3D.Create(this.transform, chatBubblePos.localPosition, ChatBubble3D.IconType.Happy, chatBubbleText, chatBubblePopUpTime);
     }
 
     public string GetInteractText() 

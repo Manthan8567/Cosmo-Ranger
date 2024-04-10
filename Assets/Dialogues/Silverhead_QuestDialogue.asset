@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fa2fcb08c070545aa6bad9f2294e46, type: 3}
+  m_Name: Silverhead_QuestDialogue
+  m_EditorClassIdentifier: 
+  characterName: Silverhead
+  dialoguePhrase:
+  - Shhhh-
+  - Didn't you hear something just now?
+  - I can feel it. There's an intruder somewhere.
+  - I think it's in the room behind me.
+  - Can you go and check what it is? If it's suspicious, kill it right away.
+  - Meanwhile, I'll go to the control room for landing.
+  - Talk to me after dealing with the intruder. See you.

@@ -6,24 +6,33 @@ public class SpaceshipInteract : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
     [SerializeField] private GameObject askRideUI;
-    [SerializeField] Player playerInventory;
     [SerializeField] private Transform chatBubblePos;
+    [SerializeField] private MrDoQuestManager questManager;
 
+    private bool canRide = false;
     private string chatBubbleText = "Bring more diamonds!";
 
-    private int diamondNeeded = 4;
 
-
-    private void Start()
+    private void OnEnable()
     {
+        questManager.OnQuestDone += AllowToRide;
         askRideUI.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        questManager.OnQuestDone -= AllowToRide;
+    }
+
+    private void AllowToRide(int notUsedHere)
+    {
+        canRide = true;
     }
 
     public void Interact(Transform interactorTransform)
     {
-        // If player has completed the task, ask to ride
-        // 3 is for test. Should use the real value (totalDiamonds) after level design.
-        if (playerInventory.NumberOfDiamonds >= diamondNeeded)
+        // If player has completed the quest, ask to ride
+        if (canRide)
         {
             askRideUI.SetActive(true);
 

@@ -1,32 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using TMPro;
-using UnityEditor.Rendering;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] GameObject player;
     [SerializeField] GameObject dialogueWindow;
-    [SerializeField] InputManager inputManager;
+    [SerializeField] QuestManager questManager;
 
     [SerializeField] Text nameText; // Name whose the one talking
     [SerializeField] Text dialogueText;
 
     [SerializeField] DialogueData questDialogue;
     [SerializeField] DialogueData questInProcessDialogue;
+    [SerializeField] DialogueData questDoneDialogue;
+
+    public event Action<bool> OnFinishDialogue;
 
     private DialogueData currDialogue;
     private int textIndex = 0;
 
 
-    private void Start()
+    private void OnEnable()
     {
+        questManager.OnQuestDone += SetQuestDoneDialogue;
         currDialogue = questDialogue;
+    }
+
+    private void OnDisable()
+    {
+        questManager.OnQuestDone -= SetQuestDoneDialogue;
     }
 
     private void Update()
@@ -62,12 +64,22 @@ public class DialogueManager : MonoBehaviour
         textIndex++;
     }
 
+    public void SetQuestDoneDialogue(int currProgression)
+    {
+        currDialogue = questDoneDialogue;
+    }
+
     public void FinishDialogue()
     {
+        OnFinishDialogue?.Invoke(questManager.isQuestDone);
+
         dialogueWindow.SetActive(false);
 
-        // From now, NPC will read questInProcessDialogue.
-        currDialogue = questInProcessDialogue;
+        if (!questManager.isQuestDone)
+        {
+            // From now, NPC will read questInProcessDialogue.
+            currDialogue = questInProcessDialogue;
+        }
 
         GameManager.Singleton.ResumeGame();
     }

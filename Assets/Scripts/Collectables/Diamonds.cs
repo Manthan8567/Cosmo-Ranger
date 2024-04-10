@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,16 @@ public class Diamonds : MonoBehaviour
             AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
             playerInventory.DiamondCollected();
             gameObject.SetActive(false);
+        }
+
+
+
+        // This is for temporary use
+        temp_PlayerDiamonds playerDiamonds = other.GetComponent<temp_PlayerDiamonds>();
+
+        if (playerDiamonds != null)
+        {
+            playerDiamonds.AddDiamond();
         }
     }
 }
