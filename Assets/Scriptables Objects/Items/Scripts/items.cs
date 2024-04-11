@@ -14,7 +14,7 @@ public class items : MonoBehaviour
             // Add the item to the player's inventory
             player.inventory.AddItem(item, 1);
             // Play sound effect or perform any other action
-            AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
+            //AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
             // Destroy the item object
             Destroy(gameObject);
         }

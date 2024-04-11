@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c017580c49d254688919141d216bbe, type: 3}
   m_Name: TutorialInventory
   m_EditorClassIdentifier: 
-  savePath: 
-  Container: []
+  savePath: /inventory.Save
+  Container:
+  - ID: 1
+    item: {fileID: 11400000, guid: 2cab5f2939eace1478839b9ee1760dc2, type: 2}
+    amount: 10
+  - ID: 3
+    item: {fileID: 11400000, guid: 98de7b6a86a68bd409d4bcdd5dba9e77, type: 2}
+    amount: 3
