@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23000012424984624}
   - component: {fileID: 114000011891754906}
   - component: {fileID: 5897211302485321074}
-  - component: {fileID: 732992971705650552}
+  - component: {fileID: 5514901864686480217}
   m_Layer: 0
   m_Name: SphereGemLarge
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1164157, y: 2.2253287, z: 2.2253284}
   m_Center: {x: -0.00000047683716, y: 0.0000076293945, z: -0.00000041723257}
---- !u!114 &732992971705650552
+--- !u!114 &5514901864686480217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010728489230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5616beee51def3c41b662bca22eeccb5, type: 3}
+  m_Script: {fileID: 11500000, guid: eea037691bbe04244a3f89715ec5950c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 98de7b6a86a68bd409d4bcdd5dba9e77, type: 2}

@@ -6177,6 +6177,10 @@ PrefabInstance:
       propertyPath: m_AvoidObstacles
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3963225038115675118, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d8e122219c62334688bb0b245bc2e3e, type: 2}
     - target: {fileID: 4351072337106826592, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_Lens.FieldOfView
       value: 40

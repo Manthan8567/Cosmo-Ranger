@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IShopCustomer
 {
      
     public static Player Instance {  get; private set; }
-
+    public InventoryObject inventory;
     public int NumberOfDiamonds { get; set; }
 
     public event EventHandler OnDiamondCollected;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IShopCustomer
     private InventoryUI inventoryUI;
 
      private void Awake()
-    {
+     {
         if (Instance == null)
         {
             Instance = this;
@@ -26,6 +26,24 @@ public class Player : MonoBehaviour, IShopCustomer
             Destroy(gameObject);
         }
 
+     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("Trying To save inventory");
+            inventory.Save();
+            Debug.Log("saved!");
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Debug.Log("Trying to load inventory");
+            inventory.Load();
+
+            Debug.Log("charged!");
+            
+        }
     }
 
     public void DiamondCollected()
@@ -35,24 +53,75 @@ public class Player : MonoBehaviour, IShopCustomer
     }
 
     // this method is where you can change the outfit of the player 
-    public void BoughtItem(Item.ItemType itemType)
+    public void BoughtItem(ItemObject item)
     {
-        
-        Debug.Log("Bought item: " + itemType);
+        Debug.Log("Bought item: " + item);
     }
     /**/
     public bool TrySpendDiamondAmount(int amount)
     {
-        // Ensure the inventory is not null before accessing it
-        if (NumberOfDiamonds >= amount)
+        // Get the diamond quantity from the inventory
+        int diamondQuantity = GetDiamondQuantity();
+
+        // Ensure that the diamond quantity is greater than or equal to the specified amount
+        if (diamondQuantity >= amount)
         {
-            NumberOfDiamonds -= amount;
-            // Notify other classes that the gold amount has changed
-            OnDiamondCollected?.Invoke(this, EventArgs.Empty);
+            // Deduct the specified amount of diamonds from the inventory
+            // Use the AddItem method with a negative amount to subtract diamonds
+            inventory.AddItem(GetDiamondItemObject(), -amount);
+
+            // Notify other classes that the diamond amount has changed
+            //OnDiamondCollected?.Invoke(this, EventArgs.Empty);
 
             return true;
         }
 
         return false;
     }
+
+    public ItemObject GetDiamondItemObject()
+    {
+        foreach (InventorySlot slot in inventory.Container)
+        {
+            // Check if the item in the inventory slot represents diamonds
+            if (slot.item.type == ItemType.Diamonds)
+            {
+                return slot.item;
+            }
+        }
+
+        // If no diamond item is found, return null or handle the case accordingly
+        return null;
+    }
+
+    public int GetDiamondQuantity()
+    {
+        ItemObject diamondItem = GetDiamondItemObject();
+
+        if (diamondItem != null)
+        {
+            int diamondQuantity = 0;
+
+            foreach (InventorySlot slot in inventory.Container)
+            {
+                if (slot.item == diamondItem)
+                {
+                    diamondQuantity += slot.amount;
+                }
+            }
+
+            return diamondQuantity;
+        }
+        else
+        {
+            return 0; // Return 0 if no diamond item is found in the inventory
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
+    }
+
+   
 }
