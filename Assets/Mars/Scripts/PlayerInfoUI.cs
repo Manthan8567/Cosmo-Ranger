@@ -5,6 +5,10 @@ using TMPro;
 
 public class PlayerInfoUI : MonoBehaviour
 {
+    [SerializeField] PlayerStateMachine playerStateMachine;
+
+    public GameObject uiPanel; // Reference to the UI panel GameObject
+
     public TextMeshProUGUI currentLevelText;
     public TextMeshProUGUI currentExpText;
     public TextMeshProUGUI nextLevelExpText;
@@ -15,15 +19,17 @@ public class PlayerInfoUI : MonoBehaviour
     public TextMeshProUGUI totalKillText; // New field for displaying total kills
 
     //private ExperienceManager experienceManager;
-    private PlayerStateMachine playerStateMachine;
+    
 
     private int totalKills = 0; // Variable to store total kills
 
     private void Start()
     {
+        // Disable the UI panel initially
+        uiPanel.SetActive(false);
+
         // Subscribe to events
-        ExperienceManager.Singleton.OnGainExperience += UpdateUI;
-        ExperienceManager.Singleton.OnLevelUp += UpdateUI; 
+        ExperienceManager.Singleton.OnLevelUp += ShowLevelUpUI;
 
         // Update UI initially
         UpdateUI();
@@ -37,9 +43,8 @@ public class PlayerInfoUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Unsubscribe from events to avoid memory leaks
-        ExperienceManager.Singleton.OnGainExperience -= UpdateUI;
-        ExperienceManager.Singleton.OnLevelUp -= UpdateUI;
+        // Unsubscribe from events
+        ExperienceManager.Singleton.OnLevelUp -= ShowLevelUpUI;
     }
 
     private void UpdateUI()
@@ -55,6 +60,27 @@ public class PlayerInfoUI : MonoBehaviour
         attack2Text.text = "Attack 2 Damage: " + GetAttackDamage(1).ToString();
         attack3Text.text = "Attack 3 Damage: " + GetAttackDamage(2).ToString();
         totalKillText.text = "Total Kill: " + totalKills.ToString() + " kills";
+    }
+
+    private void ShowLevelUpUI()
+    {
+        // Enable the UI panel when the player levels up
+        uiPanel.SetActive(true);
+
+        // Update UI elements
+        UpdateUI();
+
+        // Start a coroutine to disable the UI panel after a certain duration
+        StartCoroutine(DisableUIAfterDelay());
+    }
+
+    private IEnumerator DisableUIAfterDelay()
+    {
+        // Wait for a certain duration
+        yield return new WaitForSeconds(5f); // Adjust the duration as needed
+
+        // Disable the UI panel
+        uiPanel.SetActive(false);
     }
 
     private void UpdateHealthUI()
