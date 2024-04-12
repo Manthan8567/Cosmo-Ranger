@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class HpBarManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class HpBarManager : MonoBehaviour
         health.OnTakeDamage += UpdateHPBar;
         health.OnDie += TurnOffHPBar;
 
+        health.OnHeal += UpdateHPBar;
+
         // When the game starts, update HP bar.
         // Parameter doesn't do anything here.
         UpdateHPBar(0);
@@ -25,6 +28,8 @@ public class HpBarManager : MonoBehaviour
         ExperienceManager.Singleton.OnLevelUp -= FillHPBarFull;
         health.OnTakeDamage -= UpdateHPBar;
         health.OnDie -= TurnOffHPBar;
+
+        health.OnHeal += UpdateHPBar;
     }
 
     public void FillHPBarFull()

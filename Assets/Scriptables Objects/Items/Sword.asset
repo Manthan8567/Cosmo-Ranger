@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a80f899950ba44ca43d581af854a98, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3471844903369525086, guid: 5690869aa3fbfa849881f5370af49936, type: 3}
+  Id: 0
+  UI_Display: {fileID: 21300000, guid: f70d03523110e034f87af4b4e36a6954, type: 3}
   type: 1
   price: 5
   description: space sword

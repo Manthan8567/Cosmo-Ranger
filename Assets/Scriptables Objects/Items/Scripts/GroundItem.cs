@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class items : MonoBehaviour
+public class GroundItem : MonoBehaviour
 {
     public ItemObject item;
 
@@ -12,9 +12,9 @@ public class items : MonoBehaviour
         if (player != null)
         {
             // Add the item to the player's inventory
-            player.inventory.AddItem(item, 1);
+            player.inventory.AddItem(new Item(item), 1);
             // Play sound effect or perform any other action
-            //AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
+            AudioManager.Singleton.PlaySoundEffect("CollectDiamond");
             // Destroy the item object
             Destroy(gameObject);
         }

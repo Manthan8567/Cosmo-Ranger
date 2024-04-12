@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3c91e0f82e0c34b91d20d664576ac7, type: 3}
   m_Name: Diamonds
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4344957543339479365, guid: 25d42e0e8fc0746428b833253b69dd14, type: 3}
+  Id: 3
+  UI_Display: {fileID: 21300000, guid: b33788ed19a670a4b84e336d3c3aa6da, type: 3}
   type: 3
   price: 0
   description: diamonds yu can use to trade

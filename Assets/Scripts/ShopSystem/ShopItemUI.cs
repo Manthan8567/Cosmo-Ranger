@@ -22,7 +22,7 @@ public class ShopItemUI : MonoBehaviour
         {
             Debug.Log("Item purchased: " + item.name);
             Player.Instance.BoughtItem(item);
-            Player.Instance.inventory.AddItem(item, 1);
+            Player.Instance.inventory.AddItem(new Item(item), 1);
 
         }
         else
@@ -31,5 +31,6 @@ public class ShopItemUI : MonoBehaviour
             // Optionally, display a message to the player indicating insufficient funds
         }
     }
+
     
 }

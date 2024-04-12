@@ -496,9 +496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfChatBubble: {fileID: 3728437068038445425, guid: 989d3d1b7b1ce7d478b68467dd265d5f, type: 3}
-  armorSprite: {fileID: 0}
-  swordSprite: {fileID: 0}
-  healthPotionSprite: {fileID: 0}
 --- !u!114 &112195704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4720,6 +4717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef9196a71984e74e9aef680c2ef0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryObject: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
 --- !u!4 &1364777738
 Transform:
   m_ObjectHideFlags: 0
@@ -8112,7 +8110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069696835}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.022174679, y: -0.16998017, z: 0.003825916, w: 0.9851905}
+  m_LocalRotation: {x: 0.022174679, y: -0.16998017, z: 0.0038259155, w: 0.9851905}
   m_LocalPosition: {x: 35.224148, y: 1.7223251, z: -40.70921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8314,11 +8312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8834425679228467893, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12016956
+      value: 0.1201696
       objectReference: {fileID: 0}
     - target: {fileID: 8834425679228467893, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.030604618
+      value: -0.030604629
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

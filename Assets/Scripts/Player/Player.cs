@@ -79,9 +79,9 @@ public class Player : MonoBehaviour, IShopCustomer
         return false;
     }
 
-    public ItemObject GetDiamondItemObject()
+    public Item GetDiamondItemObject()
     {
-        foreach (InventorySlot slot in inventory.Container)
+        foreach (InventorySlot slot in inventory.Container.items)
         {
             // Check if the item in the inventory slot represents diamonds
             if (slot.item.type == ItemType.Diamonds)
@@ -96,13 +96,13 @@ public class Player : MonoBehaviour, IShopCustomer
 
     public int GetDiamondQuantity()
     {
-        ItemObject diamondItem = GetDiamondItemObject();
+        Item diamondItem = GetDiamondItemObject();
 
         if (diamondItem != null)
         {
             int diamondQuantity = 0;
 
-            foreach (InventorySlot slot in inventory.Container)
+            foreach (InventorySlot slot in inventory.Container.items)
             {
                 if (slot.item == diamondItem)
                 {
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour, IShopCustomer
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
+        inventory.Container.items.Clear();
     }
 
    

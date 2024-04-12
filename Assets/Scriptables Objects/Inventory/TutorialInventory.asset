@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: TutorialInventory
   m_EditorClassIdentifier: 
   savePath: /inventory.Save
+  database: {fileID: 11400000, guid: 38037e86d4f202c4a9858e15be75fb33, type: 2}
   Container:
-  - ID: 1
-    item: {fileID: 11400000, guid: 2cab5f2939eace1478839b9ee1760dc2, type: 2}
-    amount: 10
-  - ID: 3
-    item: {fileID: 11400000, guid: 98de7b6a86a68bd409d4bcdd5dba9e77, type: 2}
-    amount: 3
+    items: []

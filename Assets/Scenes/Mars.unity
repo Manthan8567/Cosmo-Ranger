@@ -3568,6 +3568,10 @@ PrefabInstance:
       propertyPath: levelUpText
       value: 
       objectReference: {fileID: 889402958}
+    - target: {fileID: 3963225038115675118, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
     - target: {fileID: 4811520325637658676, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000031931518
@@ -5576,6 +5580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef9196a71984e74e9aef680c2ef0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryObject: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
 --- !u!4 &1379998962
 Transform:
   m_ObjectHideFlags: 0

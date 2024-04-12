@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
-    [SerializeField] private GameObject ShopObject;
+    [SerializeField] private GameObject ShopUI_Display;
     public string GetInteractText()
     {
         return interactText;
@@ -18,14 +18,15 @@ public class ShopInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        ShopObject.SetActive(true);
+
+        ShopUI_Display.SetActive(true);
 
         GameManager.Singleton.StopGame();
     }
 
     public void ExitShop()
     {
-        ShopObject.SetActive(false);
+        ShopUI_Display.SetActive(false);
         GameManager.Singleton.ResumeGame();
     }
 

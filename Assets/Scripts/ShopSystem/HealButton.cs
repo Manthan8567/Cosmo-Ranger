@@ -9,7 +9,8 @@ public class HealButton : MonoBehaviour
 
     private void Awake()
     {
-        playerHealth = GetComponent<Health>();
+        playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
+        Debug.Log(playerHealth);
     }
 
     public void Heal()
@@ -20,6 +21,7 @@ public class HealButton : MonoBehaviour
         {
             playerHealth.Heal(MedKitItem.restoreHealthvalue); // Restore health using public method from Health class
             Debug.Log($"Health fully restored to: {playerHealth.CurrHealth}");
+
         }
     }
 }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7249539139957b244adaf6616a44c486, type: 3}
   m_Name: Medkit
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3470972101290157528, guid: cf95cc8bbb009674cbc7326b7fdf7bc5, type: 3}
+  Id: 1
+  UI_Display: {fileID: 21300000, guid: fb2f01345c1ce9b4e850b044535d1f0a, type: 3}
   type: 0
   price: 3
   description: Space Medkit

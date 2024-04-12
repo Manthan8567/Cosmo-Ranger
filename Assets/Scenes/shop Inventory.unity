@@ -593,7 +593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426fc7791a19cfd4a9e12412a4a57837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorySlotPrefab: {fileID: 4344957543339479365, guid: d3eb8d1c41d96544eb35ee6c8b90470b, type: 3}
   inventory: {fileID: 11400000, guid: 4d8e122219c62334688bb0b245bc2e3e, type: 2}
+  inventoryPanel: {fileID: 510320416}
 --- !u!114 &510320420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,7 +804,7 @@ Transform:
   m_GameObject: {fileID: 782570494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1440.26, y: 778.52, z: -54.38}
+  m_LocalPosition: {x: 1440.26, y: 778.52, z: -54.097}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
