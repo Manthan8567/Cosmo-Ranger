@@ -22,8 +22,8 @@ public class ExperienceManager : MonoBehaviour
     }
     #endregion
 
-    public Health playerHealth; // Reference to the Health component
-    public PlayerStateMachine playerStateMachine; // Get a Reference to the PlayerStateMachine to update attack damage
+    [SerializeField] Health playerHealth; // Reference to the Health component
+    [SerializeField] PlayerStateMachine playerStateMachine; // Get a Reference to the PlayerStateMachine to update attack damage
 
     public int currentLevel = 1;
     public float currentExperience = 0;
@@ -64,10 +64,10 @@ public class ExperienceManager : MonoBehaviour
             playerStateMachine.UpdateAttackDamageForLevel(currentLevel);
         }
 
-        //Debug.Log($"Leveled Up! Current Level: {currentLevel}");
-        //Debug.Log($"Current Experience: {currentExperience}");
-        //Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
-        //Debug.Log($"Health fully restored to: {playerHealth.MaxHealth}"); // Debug message for health restoration
+        Debug.Log($"Leveled Up! Current Level: {currentLevel}");
+        Debug.Log($"Current Experience: {currentExperience}");
+        Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
+        
 
         OnLevelUp?.Invoke();
     }
