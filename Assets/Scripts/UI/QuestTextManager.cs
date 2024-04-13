@@ -9,12 +9,14 @@ public class QuestTextManager : MonoBehaviour
     [SerializeField] string questTextBase = "- what to do";
 
 
-    private void OnEnable()
+    private void Start()
     {
         questManager.OnUpdateProgression += UpdateQuestText;
         questManager.OnQuestDone += UpdateQuestText;
 
         dialogueManager.OnFinishDialogue += ToggleQuestProgressionText;
+
+        UpdateQuestText(0);
     }
 
     private void OnDisable()
@@ -28,8 +30,6 @@ public class QuestTextManager : MonoBehaviour
     public void ToggleQuestProgressionText(bool isQuestDone)
     {
         questProgressionText.enabled = !isQuestDone;
-
-        Debug.Log("toggled");
     }
 
     public void UpdateQuestText(int currProgression)

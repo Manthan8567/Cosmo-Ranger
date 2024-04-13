@@ -64,10 +64,10 @@ public class ExperienceManager : MonoBehaviour
             playerStateMachine.UpdateAttackDamageForLevel(currentLevel);
         }
 
-        Debug.Log($"Leveled Up! Current Level: {currentLevel}");
-        Debug.Log($"Current Experience: {currentExperience}");
-        Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
-        Debug.Log($"Health fully restored to: {playerHealth.MaxHealth}"); // Debug message for health restoration
+        //Debug.Log($"Leveled Up! Current Level: {currentLevel}");
+        //Debug.Log($"Current Experience: {currentExperience}");
+        //Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
+        //Debug.Log($"Health fully restored to: {playerHealth.MaxHealth}"); // Debug message for health restoration
 
         OnLevelUp?.Invoke();
     }

@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quest In Process:'
+  m_text: 'Quest In Progress:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -285,3 +285,4 @@ MonoBehaviour:
   questManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   questProgressionText: {fileID: 4427684987035514039}
+  questTextBase: '- Kill the intruder'
