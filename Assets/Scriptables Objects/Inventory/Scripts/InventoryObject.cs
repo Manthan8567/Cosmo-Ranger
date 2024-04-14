@@ -6,49 +6,71 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
 using System.Runtime.Serialization;
+using System;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
 
-
     public string savePath;
     public ItemDatabaseObject database;
     public Inventory Container;
-    
+
+    public event Action InventoryChanged;
+
+
 
     public void AddItem(Item _item, int _amount)
-{
-    // Check if the item already exists in the inventory
-    bool hasItem = false;
-    for (int i = 0; i < Container.items.Count; i++)
     {
-        if (Container.items[i].item.Id == _item.Id) 
+        // Check if the item already exists in the inventory
+        bool hasItem = false;
+        for (int i = 0; i < Container.items.Count; i++)
         {
-            // If the amount to add is negative, subtract the item instead
-            if (_amount < 0)
+            if (Container.items[i].item.Id == _item.Id) 
             {
-                // Ensure we don't subtract more than what's available in the inventory
-                Container.items[i].AddAmount(-Mathf.Min(Container.items[i].amount, -_amount));
+                // If the amount to add is negative, subtract the item instead
+                if (_amount < 0)
+                {
+                    // Ensure we don't subtract more than what's available in the inventory
+                    Container.items[i].AddAmount(-Mathf.Min(Container.items[i].amount, -_amount));
+                }
+                else
+                {
+                    // Add the item with the specified amount
+                    Container.items[i].AddAmount(_amount);
+                }
+                hasItem = true;
+                break;
             }
-            else
-            {
-                // Add the item with the specified amount
-                Container.items[i].AddAmount(_amount);
-            }
-            hasItem = true;
-            break;
         }
+        // If the item doesn't exist in the inventory, add it
+        if (!hasItem)
+        {
+            // Ensure that when subtracting, we don't add the item with a negative amount
+            if (_amount >= 0)
+            {
+                Container.items.Add(new InventorySlot(_item.Id, _item, _amount));
+            }
+        }
+
+        // Call the event to notify subscribers that the inventory has changed
+        InventoryChanged?.Invoke();
     }
-    // If the item doesn't exist in the inventory, add it
-    if (!hasItem)
+
+    public int GetItemCount(Item _item)
     {
-        // Ensure that when subtracting, we don't add the item with a negative amount
-        if (_amount >= 0)
+        int itemCount = 0;
+
+        foreach (InventorySlot slot in Container.items)
         {
-            Container.items.Add(new InventorySlot(_item.Id, _item, _amount));
+            if (slot.item == _item)
+            {
+                itemCount += slot.amount;
+            }
         }
+
+        return itemCount;
     }
-}
+
 
     [ContextMenu("Save")]
     public void Save()

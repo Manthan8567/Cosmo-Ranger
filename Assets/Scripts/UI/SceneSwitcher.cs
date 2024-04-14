@@ -25,9 +25,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void QuitGame()
     {
-        // Save inventory data before quitting the game
-        inventoryObject.Save();
-
+        inventoryObject.Clear();
         // Quit the application
         Application.Quit();
     }

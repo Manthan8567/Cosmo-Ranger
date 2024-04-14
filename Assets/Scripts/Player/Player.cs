@@ -12,7 +12,6 @@ public class Player : MonoBehaviour, IShopCustomer
 
     public event EventHandler OnDiamondCollected;
 
-    private InventoryUI inventoryUI;
 
      private void Awake()
      {
@@ -28,23 +27,6 @@ public class Player : MonoBehaviour, IShopCustomer
 
      }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Debug.Log("Trying To save inventory");
-            inventory.Save();
-            Debug.Log("saved!");
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Debug.Log("Trying to load inventory");
-            inventory.Load();
-
-            Debug.Log("charged!");
-            
-        }
-    }
 
     public void DiamondCollected()
     {
@@ -116,6 +98,22 @@ public class Player : MonoBehaviour, IShopCustomer
         {
             return 0; // Return 0 if no diamond item is found in the inventory
         }
+    }
+
+    public int GetSwordQuantity()
+    {
+        int swordQuantity = 0;
+
+        // Loop through inventory items and count the number of sword items
+        foreach (InventorySlot slot in inventory.Container.items)
+        {
+            if (slot.item.type == ItemType.Equipment)
+            {
+                swordQuantity += slot.amount;
+            }
+        }
+
+        return swordQuantity;
     }
 
     private void OnApplicationQuit()

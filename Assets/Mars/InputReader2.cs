@@ -16,6 +16,8 @@ public class InputReader2 : MonoBehaviour, Controls.IPlayerActions, Controls.ICu
     public event Action DodgeEvent;
     public event Action TargetEvent;
     public event Action CancelEvent;
+    public event Action UseMedkitEvent;
+
 
     private Controls controls;
 
@@ -102,5 +104,14 @@ public class InputReader2 : MonoBehaviour, Controls.IPlayerActions, Controls.ICu
         if (!context.performed) { return; }
 
         IsCursorOn = !IsCursorOn;
+    }
+
+    // H button
+
+    public void OnHealing(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+
+        UseMedkitEvent?.Invoke();
     }
 }

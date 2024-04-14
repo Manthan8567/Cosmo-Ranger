@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     public static float runInput;
     public static float punchInput;
     public static float spell_fireballInput;
+    public static float healInput;
 
 
     private void Awake()
@@ -46,6 +47,8 @@ public class InputManager : MonoBehaviour
         // Player spell -fireball input
         myInputReader.Player.Spell_Fireball.performed += ctx => spell_fireballInput = ctx.ReadValue<float>();
         myInputReader.Player.Spell_Fireball.canceled += ctx => spell_fireballInput = ctx.ReadValue<float>();
+
+
 
 
         myInputReader.Player.Enable();

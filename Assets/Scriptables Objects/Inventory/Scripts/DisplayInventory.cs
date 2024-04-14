@@ -12,18 +12,18 @@ public class DisplayInventory : MonoBehaviour
     public GameObject inventoryPanel;
     private bool isInventoryVisible = true;
 
-    private void Start()
+    private void Awake()
     {
+        CreateDisplay();
 
-        //CreateDisplay();
-        
+        // Subscribe to the InventoryChanged event
+        inventory.InventoryChanged += UpdateDisplay;
+
     }
-
-    private void Update()
+    private void OnDestroy()
     {
-
-        UpdateDisplay();
-
+        // Unsubscribe from the InventoryChanged event when the object is destroyed
+        inventory.InventoryChanged -= UpdateDisplay;
     }
     
     public void CreateDisplay()

@@ -69,4 +69,24 @@ public class PlayerStateMachine : StateMachine
             Debug.Log($"Attack '{attack.AnimationName}' damage increased from {oldDamage} to {attack.Damage}");
         }
     }
+
+    // Function to update attack damage based on number of sword in the inventory 
+    public void UpdateAttackDamageForSwordsBought()
+    {
+        // Get the number of sword items in the inventory
+        int attackBonus = 5;
+        // Loop through all attacks and update their damage based on sword quantity
+        foreach (Attack attack in Attacks)
+        {
+            int oldDamage = attack.Damage; // Store the original damage
+
+            // Example: Increase damage by 2 points per sword
+            int damageIncrease = attackBonus;
+
+            // Update attack's damage
+            attack.IncreaseDamage(damageIncrease);
+
+            Debug.Log($"Attack '{attack.AnimationName}' damage increased from {oldDamage} to {attack.Damage} based on sword quantity");
+        }
+    }
 }
