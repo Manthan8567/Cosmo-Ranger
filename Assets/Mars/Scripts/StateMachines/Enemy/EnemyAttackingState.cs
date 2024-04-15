@@ -21,6 +21,7 @@ public class EnemyAttackingState : EnemyBaseState
     {
         if (GetNormalizedTime(stateMachine.Animator) >= 1)
         {
+            Debug.Log("anim ends");
             stateMachine.SwitchState(new EnemyChasingState(stateMachine));
         }
 
