@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, IShopCustomer
      
     public static Player Instance {  get; private set; }
     public InventoryObject inventory;
+    public Item swordItem;
     public int NumberOfDiamonds { get; set; }
 
     public event EventHandler OnDiamondCollected;
@@ -19,14 +20,15 @@ public class Player : MonoBehaviour, IShopCustomer
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
         }
         else
         {
             Destroy(gameObject);
         }
 
-     }
 
+     }
 
     public void DiamondCollected()
     {
@@ -100,26 +102,12 @@ public class Player : MonoBehaviour, IShopCustomer
         }
     }
 
-    public int GetSwordQuantity()
-    {
-        int swordQuantity = 0;
 
-        // Loop through inventory items and count the number of sword items
-        foreach (InventorySlot slot in inventory.Container.items)
-        {
-            if (slot.item.type == ItemType.Equipment)
-            {
-                swordQuantity += slot.amount;
-            }
-        }
-
-        return swordQuantity;
-    }
 
     private void OnApplicationQuit()
     {
         inventory.Container.items.Clear();
     }
 
-   
+
 }

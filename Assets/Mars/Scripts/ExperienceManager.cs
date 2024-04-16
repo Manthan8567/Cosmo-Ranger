@@ -23,7 +23,6 @@ public class ExperienceManager : MonoBehaviour
     #endregion
 
     [SerializeField] Health playerHealth; // Reference to the Health component
-    [SerializeField] PlayerStateMachine playerStateMachine; // Get a Reference to the PlayerStateMachine to update attack damage
 
     public int currentLevel = 1;
     public float currentExperience = 0;
@@ -59,9 +58,13 @@ public class ExperienceManager : MonoBehaviour
         }
 
         // Update attack damage upon leveling up
-        if (playerStateMachine != null)
+        if (PlayerStateMachine.Instance != null)
         {
-            playerStateMachine.UpdateAttackDamageForLevel(currentLevel);
+            PlayerStateMachine.Instance.UpdateAttackDamageForLevel(currentLevel);
+        }
+        else
+        {
+            Debug.Log("here is the problem");
         }
 
         Debug.Log($"Leveled Up! Current Level: {currentLevel}");

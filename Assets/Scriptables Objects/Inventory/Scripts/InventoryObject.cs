@@ -56,20 +56,6 @@ public class InventoryObject : ScriptableObject
         InventoryChanged?.Invoke();
     }
 
-    public int GetItemCount(Item _item)
-    {
-        int itemCount = 0;
-
-        foreach (InventorySlot slot in Container.items)
-        {
-            if (slot.item == _item)
-            {
-                itemCount += slot.amount;
-            }
-        }
-
-        return itemCount;
-    }
 
 
     [ContextMenu("Save")]
@@ -106,23 +92,29 @@ public class InventoryObject : ScriptableObject
         InventoryChanged?.Invoke();
     }
 
-    public void DeleteSaveFile()
-    {
-        // Combine the persistent data path and the save path to get the full file path
-        string filePath = Path.Combine(Application.persistentDataPath, savePath);
 
-        // Check if the save file exists
-        if (File.Exists(filePath))
+    public void CheckAndInitializeSwordItem(Item swordItem)
+    {
+        bool hasSword = false;
+
+        // Check if the sword item already exists in the inventory
+        foreach (InventorySlot slot in Container.items)
         {
-            // Delete the save file
-            File.Delete(filePath);
-            Debug.Log("Save file deleted: " + filePath);
+            if (slot.item == swordItem)
+            {
+                hasSword = true;
+                break;
+            }
         }
-        else
+
+        // If the sword item does not exist in the inventory, add it with an initial amount of 1
+        if (!hasSword)
         {
-            Debug.LogWarning("Save file not found: " + filePath);
+            AddItem(swordItem, 1);
+            Debug.Log("Sword item initialized in inventory.");
         }
     }
+
 }
 
 

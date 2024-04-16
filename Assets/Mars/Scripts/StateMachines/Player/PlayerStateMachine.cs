@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
+    // Singleton instance
+    public static PlayerStateMachine Instance { get; private set; }
+
+    // Your existing serialized fields...
+
+    private void Awake()
+    {
+        // Ensure there's only one instance of PlayerStateMachine
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Make sure the object persists across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy any duplicate instances
+        }
+    }
+
     [field: SerializeField] public InputReader2 InputReader2 { get; private set; }
     [field: SerializeField] public CharacterController Controller { get; private set; }
     [field: SerializeField] public Animator Animator { get; private set; }
@@ -20,14 +39,23 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 
+
+
     public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
     public Transform MainCameraTransform { get; private set; }
+
+    // Default attack damage values
+    private int[] defaultAttackDamages = { 10, 15, 25 };
+
 
     private void Start()
     {
         MainCameraTransform = Camera.main.transform;
 
         SwitchState(new PlayerFreeLookState(this));
+
+        // Load attack damage values when the game starts
+        LoadAttackDamages();
     }
 
     private void OnEnable()
@@ -88,5 +116,49 @@ public class PlayerStateMachine : StateMachine
 
             Debug.Log($"Attack '{attack.AnimationName}' damage increased from {oldDamage} to {attack.Damage} based on sword quantity");
         }
+    }
+
+    private void LoadAttackDamages()
+    {
+        for (int i = 0; i < Attacks.Length; i++)
+        {
+            // Use PlayerPrefs to get the saved attack damage value
+            int savedDamage = PlayerPrefs.GetInt($"AttackDamage{i}", defaultAttackDamages[i]);
+
+            // Apply the saved or default attack damage to the Attack object
+            Attacks[i].Damage = savedDamage;
+        }
+    }
+
+    // Function to save attack damage values to PlayerPrefs
+    private void SaveAttackDamages()
+    {
+        for (int i = 0; i < Attacks.Length; i++)
+        {
+            // Save the current attack damage value to PlayerPrefs
+            PlayerPrefs.SetInt($"AttackDamage{i}", Attacks[i].Damage);
+        }
+
+        // Save PlayerPrefs data to disk
+        PlayerPrefs.Save();
+    }
+
+    public void ResetAttackDamageToDefault()
+    {
+        for (int i = 0; i < Attacks.Length; i++)
+        {
+            // Set the attack's damage to its default value
+            Attacks[i].Damage = defaultAttackDamages[i];
+        }
+    }
+
+    private void OnDestroy()
+    {
+        
+        SaveAttackDamages();
+    }
+    private void OnApplicationQuit()
+    {
+        ResetAttackDamageToDefault();
     }
 }

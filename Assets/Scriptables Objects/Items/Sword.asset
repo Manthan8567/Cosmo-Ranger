@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   Id: 0
-  UI_Display: {fileID: 21300000, guid: f70d03523110e034f87af4b4e36a6954, type: 3}
+  UI_Display: {fileID: 21300000, guid: 7203dcb9e449d864db086d8ed15bb1d3, type: 3}
   type: 1
   price: 5
   description: A cosmic sword, upgrades granting +2 damage, harnessing celestial

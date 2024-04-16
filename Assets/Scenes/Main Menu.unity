@@ -673,6 +673,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObject: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
   displayInventory: {fileID: 1081061995}
+  item:
+    Name: sword
+    Id: 0
+    type: 1
 --- !u!4 &577921873
 Transform:
   m_ObjectHideFlags: 0

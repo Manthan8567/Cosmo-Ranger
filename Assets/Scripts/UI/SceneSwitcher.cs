@@ -17,6 +17,7 @@ public class SceneSwitcher : MonoBehaviour
         GameManager.Singleton.ResumeGame();
 
         inventoryObject.Load();
+        
         // Switch to the specified scene
         SceneManager.LoadScene(sceneIndex);
 

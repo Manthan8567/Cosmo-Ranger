@@ -6243,7 +6243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.058694188
+      value: -0.058694184
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6393,17 +6393,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2077477087}
   m_SourcePrefab: {fileID: 100100000, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
---- !u!114 &1002251924 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2774745479269905392, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
-  m_PrefabInstance: {fileID: 1002251923}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002251926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d1df592ca4c454a887d262f38cf03e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1002251925 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1738853547386369388, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
@@ -7064,7 +7053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1002251925}
-  playerStateMachine: {fileID: 1002251924}
   currentLevel: 1
   currentExperience: 0
   expForNextLevel: 100
@@ -10065,6 +10053,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObject: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
   displayInventory: {fileID: 2131184306}
+  item:
+    Name: sword
+    Id: 0
+    type: 1
 --- !u!4 &1580199121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 414502, guid: 74f8de2ddfdb61644af2f84484b176a0, type: 3}

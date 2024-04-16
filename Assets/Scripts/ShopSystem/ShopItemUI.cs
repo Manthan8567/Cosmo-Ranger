@@ -10,7 +10,6 @@ public class ShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public ItemObject item;
     public TMP_Text itemDescriptionText;
     public LevelUpEffectManager levelUpEffectManager;
-    [SerializeField] PlayerStateMachine playerStateMachine;
 
     private void Start()
     {
@@ -40,7 +39,7 @@ public class ShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Debug.Log("Item purchased: " + item.name);
             Player.Instance.BoughtItem(item);
             levelUpEffectManager.PlayLevelUpEffect();
-            playerStateMachine.UpdateAttackDamageForSwordsBought();
+            PlayerStateMachine.Instance.UpdateAttackDamageForSwordsBought();
 
         }
         else
