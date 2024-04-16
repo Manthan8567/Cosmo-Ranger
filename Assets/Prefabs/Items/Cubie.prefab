@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3146673388598035778}
   - component: {fileID: 5688502463435151220}
   - component: {fileID: 8617900877952440152}
+  - component: {fileID: -5635055700590779866}
   m_Layer: 0
   m_Name: Cubie
   m_TagString: Untagged
@@ -140,3 +141,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5635055700590779866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916895879288537332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea037691bbe04244a3f89715ec5950c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 98de7b6a86a68bd409d4bcdd5dba9e77, type: 2}

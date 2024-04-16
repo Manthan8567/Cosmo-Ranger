@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -661, y: 459}
-  m_SizeDelta: {x: 600, y: 200}
+  m_SizeDelta: {x: 600, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8130489560641018402
 CanvasRenderer:
@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlotPrefab: {fileID: 4344957543339479365, guid: d3eb8d1c41d96544eb35ee6c8b90470b, type: 3}
-  inventory: {fileID: 11400000, guid: 4d8e122219c62334688bb0b245bc2e3e, type: 2}
+  inventory: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
   inventoryPanel: {fileID: 3832450804499397470}

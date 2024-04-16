@@ -10,7 +10,6 @@ public class DisplayInventory : MonoBehaviour
     public InventoryObject inventory;
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     public GameObject inventoryPanel;
-    private bool isInventoryVisible = true;
 
     private void Awake()
     {
@@ -48,16 +47,19 @@ public class DisplayInventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        // Create a list to keep track of slots to delete
-        List<InventorySlot> slotsToDelete = new List<InventorySlot>();
-
-        for (int i = 0; i < inventory.Container.items.Count; i++)
+        // Iterate backwards over the inventory items to avoid modifying the collection while iterating
+        for (int i = inventory.Container.items.Count - 1; i >= 0; i--)
         {
             InventorySlot slotItem = inventory.Container.items[i];
             if (slotItem.amount <= 0)
             {
-                // If the amount is zero or negative, add the slot to the list of slots to delete
-                slotsToDelete.Add(slotItem);
+                // If the amount is zero or negative, remove the slot from the display and the container
+                if (itemsDisplayed.ContainsKey(slotItem))
+                {
+                    Destroy(itemsDisplayed[slotItem]);
+                    itemsDisplayed.Remove(slotItem);
+                }
+                inventory.Container.items.RemoveAt(i);
             }
             else
             {
@@ -84,19 +86,8 @@ public class DisplayInventory : MonoBehaviour
                 }
             }
         }
-
-        // Remove the visual objects associated with slots to delete
-        foreach (var slot in slotsToDelete)
-        {
-            if (itemsDisplayed.ContainsKey(slot))
-            {
-                Destroy(itemsDisplayed[slot]);
-                itemsDisplayed.Remove(slot);
-            }
-            // Remove the slot from the inventory
-            inventory.Container.items.Remove(slot);
-        }
     }
+
 
 }
 

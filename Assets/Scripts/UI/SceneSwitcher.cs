@@ -1,15 +1,12 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
     public InventoryObject inventoryObject;
+    public DisplayInventory displayInventory;
 
-    void Start()
-    {
-        // Load inventory data when the scene switches
-        inventoryObject.Load();
-    }
 
     public void SwitchScene(int sceneIndex)
     {
@@ -19,14 +16,18 @@ public class SceneSwitcher : MonoBehaviour
         // Resume the game before switching scenes
         GameManager.Singleton.ResumeGame();
 
+        inventoryObject.Load();
         // Switch to the specified scene
         SceneManager.LoadScene(sceneIndex);
+
+        displayInventory.UpdateDisplay();
     }
 
     public void QuitGame()
     {
         inventoryObject.Clear();
         // Quit the application
-        Application.Quit();
+        //Application.Quit();
+        EditorApplication.isPlaying = false;
     }
 }

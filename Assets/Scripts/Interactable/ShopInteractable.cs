@@ -7,6 +7,7 @@ public class ShopInteractable : MonoBehaviour, IInteractable
     [SerializeField] private string interactText;
     [SerializeField] private GameObject ShopUI_Display;
     [SerializeField] private PlayerStateMachine playerStateMachine; // Reference to the player's state machine
+    [SerializeField]private Animator playerAnimator;
 
     private void Start()
     {
@@ -31,8 +32,12 @@ public class ShopInteractable : MonoBehaviour, IInteractable
 
         playerStateMachine.enabled = false;
 
-
         ShopUI_Display.SetActive(true);
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.speed = 0f;
+        }
 
     }
 
@@ -40,6 +45,7 @@ public class ShopInteractable : MonoBehaviour, IInteractable
     {
 
         playerStateMachine.enabled = true;
+        playerAnimator.speed = 1f;
 
         ShopUI_Display.SetActive(false);
     }

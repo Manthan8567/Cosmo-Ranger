@@ -24,7 +24,6 @@ public class ShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Debug.Log("Item purchased: " + item.name);
             Player.Instance.BoughtItem(item);
             Player.Instance.inventory.AddItem(new Item(item), 1);
-            levelUpEffectManager.PlayLevelUpEffect();
 
         }
         else

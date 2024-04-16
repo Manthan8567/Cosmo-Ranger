@@ -80,6 +80,7 @@ public class InventoryObject : ScriptableObject
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
         formatter.Serialize(stream, Container);
         stream.Close();
+        Debug.Log("Invetory has been saved");
     }
 
     public void Load()
@@ -91,6 +92,7 @@ public class InventoryObject : ScriptableObject
             Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
             Container = (Inventory)formatter.Deserialize(stream);
             stream.Close();
+            Debug.Log("Invetory has been loaded");
         }
         else
         {
@@ -101,6 +103,25 @@ public class InventoryObject : ScriptableObject
     public void Clear()
     {
         Container = new Inventory();
+        InventoryChanged?.Invoke();
+    }
+
+    public void DeleteSaveFile()
+    {
+        // Combine the persistent data path and the save path to get the full file path
+        string filePath = Path.Combine(Application.persistentDataPath, savePath);
+
+        // Check if the save file exists
+        if (File.Exists(filePath))
+        {
+            // Delete the save file
+            File.Delete(filePath);
+            Debug.Log("Save file deleted: " + filePath);
+        }
+        else
+        {
+            Debug.LogWarning("Save file not found: " + filePath);
+        }
     }
 }
 

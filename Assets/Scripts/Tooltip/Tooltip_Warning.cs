@@ -30,9 +30,6 @@ public class Tooltip_Warning : MonoBehaviour {
         tooltipText = transform.Find("text").GetComponent<TextMeshProUGUI>();
         backgroundImage = transform.Find("background").GetComponent<Image>();
 
-        // Debug log to check if tooltipText and backgroundImage are assigned
-        Debug.Log("tooltipText: " + tooltipText);
-        Debug.Log("backgroundImage: " + backgroundImage);
         HideTooltip();
     }
 
