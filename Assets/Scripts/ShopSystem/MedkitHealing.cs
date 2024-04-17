@@ -7,6 +7,7 @@ public class MedkitHealing : MonoBehaviour
     [SerializeField] private InventoryObject inventory; // Reference to the InventoryObject
     [SerializeField] private Health playerHealth; // Reference to the Health component
     [SerializeField] private FoodObject medKitItem; // Reference to the medkit item
+    [SerializeField] private ParticleSystem medkitEffect;
 
     private void Start()
     {
@@ -52,7 +53,11 @@ public class MedkitHealing : MonoBehaviour
                 Debug.Log($"Health fully restored to: {playerHealth.CurrHealth}");
 
             }
-
+            if (medkitEffect != null)
+            {
+                medkitEffect.Play();
+                AudioManager.Singleton.PlaySoundEffect("LevelUp") ;
+            }
             // Notify other classes that the diamond amount has changed
             //OnDiamondCollected?.Invoke(this, EventArgs.Empty);
 

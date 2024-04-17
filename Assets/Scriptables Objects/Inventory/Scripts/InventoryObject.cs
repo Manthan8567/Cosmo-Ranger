@@ -93,27 +93,6 @@ public class InventoryObject : ScriptableObject
     }
 
 
-    public void CheckAndInitializeSwordItem(Item swordItem)
-    {
-        bool hasSword = false;
-
-        // Check if the sword item already exists in the inventory
-        foreach (InventorySlot slot in Container.items)
-        {
-            if (slot.item == swordItem)
-            {
-                hasSword = true;
-                break;
-            }
-        }
-
-        // If the sword item does not exist in the inventory, add it with an initial amount of 1
-        if (!hasSword)
-        {
-            AddItem(swordItem, 1);
-            Debug.Log("Sword item initialized in inventory.");
-        }
-    }
 
 }
 

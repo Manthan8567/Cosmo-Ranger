@@ -6201,6 +6201,14 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
+    - target: {fileID: 3963225038115675118, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
+      propertyPath: swordItem.Name
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963225038115675118, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
+      propertyPath: swordItem.type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4351072337106826592, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_Lens.FieldOfView
       value: 40
@@ -6243,7 +6251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.058694184
+      value: -0.058694188
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.y

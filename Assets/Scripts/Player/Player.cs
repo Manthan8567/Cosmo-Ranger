@@ -30,6 +30,7 @@ public class Player : MonoBehaviour, IShopCustomer
 
      }
 
+
     public void DiamondCollected()
     {
         NumberOfDiamonds++;
@@ -102,11 +103,24 @@ public class Player : MonoBehaviour, IShopCustomer
         }
     }
 
+    private void InitializeSwordItem()
+    {
+        if (inventory != null && swordItem != null)
+        {
+            // Add the sword item to the inventory with an initial quantity of 1
+            inventory.AddItem(swordItem, 1);
+        }
+        else
+        {
+            Debug.LogWarning("Inventory or sword item not assigned.");
+        }
+    }
 
 
     private void OnApplicationQuit()
     {
         inventory.Container.items.Clear();
+        InitializeSwordItem();
     }
 
 

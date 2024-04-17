@@ -4585,6 +4585,14 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 11400000, guid: 60e4dec9c19d58f4d962d005af7a7f37, type: 2}
+    - target: {fileID: 3963225038115675118, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
+      propertyPath: swordItem.Name
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963225038115675118, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
+      propertyPath: swordItem.type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4811520325637658676, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000031931518
@@ -4599,15 +4607,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000031852228
+      value: 0.0000021234819
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000022111149
+      value: 0.0000014740766
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0000042079846
+      value: 0.0000028053232
       objectReference: {fileID: 0}
     - target: {fileID: 5449068862495418092, guid: 4269aca7ae61abe408752eb53c0fc12f, type: 3}
       propertyPath: m_LocalRotation.w

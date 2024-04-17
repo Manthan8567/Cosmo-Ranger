@@ -6,13 +6,14 @@ public class SceneSwitcher : MonoBehaviour
 {
     public InventoryObject inventoryObject;
     public DisplayInventory displayInventory;
+    public Item item;
 
 
     public void SwitchScene(int sceneIndex)
     {
         // Save inventory data before switching scenes
         inventoryObject.Save();
-
+        
         // Resume the game before switching scenes
         GameManager.Singleton.ResumeGame();
 
@@ -22,13 +23,16 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
 
         displayInventory.UpdateDisplay();
+
     }
 
     public void QuitGame()
     {
         inventoryObject.Clear();
-        // Quit the application
-        //Application.Quit();
-        EditorApplication.isPlaying = false;
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
