@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Mr. Do
   dialoguePhrase:
-  - Thank you so much. Now, let's ride onto the spaceship.
+  - Oh, wow, you're fast!
+  - Thank you so much.
+  - Now, let's ride onto the spaceship.
+  - 'What? How can I walk to the spaceship? '
+  - I.. I mean.. My legs suddenly got recovered. Haha, it's amazing, isn't it?
+  - Anyways, let's go!

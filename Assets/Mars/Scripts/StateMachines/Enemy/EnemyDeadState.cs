@@ -21,6 +21,16 @@ public class EnemyDeadState : EnemyBaseState
             }
         }
 
+        GameObject questManagerGO = GameObject.FindWithTag("QuestManager");
+        if (questManagerGO != null)
+        {
+            QuestManager questManager = questManagerGO.GetComponent<QuestManager>();
+            if (questManager != null)
+            {
+                questManager.UpdateProgression();
+            }
+        }
+
         Debug.Log($"Enemy awarded {experienceValue.ToString()} experience points!");
         stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.Weapon.gameObject.SetActive(false);

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Mr. Do
   dialoguePhrase:
-  - Hey! I was waiting for you. Please.. please help me.
-  - I got injured while killing the zombies. So, please kill the zombies instead
-    of me.
-  - By the way, where is your sword?
-  - You've lost it? Well, don't worry. In this planet, you can use magical power.
-  - Anyways, you should be hurry. Kill all the zombies, and bring the diamonds from
-    their dead bodies.
-  - Whenever you get them all, ride on the spaceship ASAP. Go!
+  - Hey! You're here to help me, right?
+  - I got injured while carrying out my mission. Now I can't move.
+  - So... Can you carry out my mission instead of me, please?
+  - My mission is to kill all the zombies, and take diamonds from their dead bodies.
+  - Oh, by the way, it's your first time to be here, right?
+  - In this planet, you'll be healed every 10 seconds, but your maximum health gonna
+    be lower.
+  - Whenever you get them all, come back to me.

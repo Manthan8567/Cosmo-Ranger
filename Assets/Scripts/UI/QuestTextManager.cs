@@ -34,6 +34,6 @@ public class QuestTextManager : MonoBehaviour
 
     public void UpdateQuestText(int currProgression)
     {
-        questProgressionText.text = questTextBase + $"({currProgression}/{questManager.goalNum})";
+        questProgressionText.text = questTextBase + $"({currProgression}/{questManager.GoalNum})";
     }
 }

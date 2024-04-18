@@ -62,16 +62,7 @@ public class ExperienceManager : MonoBehaviour
         {
             PlayerStateMachine.Instance.UpdateAttackDamageForLevel(currentLevel);
         }
-        else
-        {
-            Debug.Log("here is the problem");
-        }
-
-        Debug.Log($"Leveled Up! Current Level: {currentLevel}");
-        Debug.Log($"Current Experience: {currentExperience}");
-        Debug.Log($"Required Exp for Next Level: {expForNextLevel}");
         
-
         OnLevelUp?.Invoke();
     }
 }

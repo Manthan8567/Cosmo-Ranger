@@ -1,20 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class MrDoQuestManager : QuestManager
 {
     [SerializeField] temp_PlayerDiamonds playerDiamonds;
+    [SerializeField] DialogueManager dialogueManager;
+
+    private bool isExpGained = false;
+
 
     private void OnEnable()
     {
         playerDiamonds.OnDiamondCollected += UpdateProgression;
+        dialogueManager.OnFinishDialogue += CheckQuestProgression;
 
-        goalNum = 4;
+        QuestExp = 30;
+        GoalNum = 4;
     }
 
     private void OnDisable()
     {
-        playerDiamonds.OnDiamondCollected += UpdateProgression;
+        playerDiamonds.OnDiamondCollected -= UpdateProgression;
+        dialogueManager.OnFinishDialogue -= CheckQuestProgression;
+    }
+
+    private void CheckQuestProgression(bool isQuestDone)
+    {
+        if (isQuestDone && !isExpGained)
+        {
+            ExperienceManager.Singleton.AddExperience(QuestExp);
+            isExpGained = true;
+        }
     }
 }

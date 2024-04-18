@@ -9,7 +9,8 @@ public class ShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public TMP_Text itemPriceText;
     public ItemObject item;
     public TMP_Text itemDescriptionText;
-    public LevelUpEffectManager levelUpEffectManager;
+    [SerializeField] ParticleSystem swordUpgradedEffect;
+    [SerializeField] GameObject attackDamageUpgradeText;
 
     private void Start()
     {
@@ -38,16 +39,23 @@ public class ShopItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             Debug.Log("Item purchased: " + item.name);
             Player.Instance.BoughtItem(item);
-            levelUpEffectManager.PlayLevelUpEffect();
             PlayerStateMachine.Instance.UpdateAttackDamageForSwordsBought();
 
+            PlaySwordItemEffect();
         }
         else
         {
-            Tooltip_Warning.ShowTooltip_Static("Not enough funds to upgrade: " + item.name);
+            Tooltip_Warning.ShowTooltip_Static("Not enough diamonds to buy: " + item.name);
             
             // Optionally, display a message to the player indicating insufficient funds
         }
+    }
+
+    public void PlaySwordItemEffect()
+    {
+        swordUpgradedEffect.Play();
+        AudioManager.Singleton.PlaySoundEffect("UpgradeSword");
+        attackDamageUpgradeText.SetActive(true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

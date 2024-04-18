@@ -1,34 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class ControlManualManager : MonoBehaviour
 {
-    [SerializeField] GameObject controlManual;
+    [SerializeField] GameObject combatManual;
+    [SerializeField] GameObject generalManual;
     [SerializeField] DialogueManager dialogueManager;
     [SerializeField] Health enemyHealth;
+
+    private float generalManualShownTime = 20f;
 
 
     private void OnEnable()
     {
         dialogueManager.OnFinishDialogue += TurnOnManual;
-        enemyHealth.OnDie += TurnOffManual;
+        enemyHealth.OnDie += TurnOffCombatManual;
     }
 
     private void OnDisable()
     {
         dialogueManager.OnFinishDialogue -= TurnOnManual;
-        enemyHealth.OnDie -= TurnOffManual;
+        enemyHealth.OnDie -= TurnOffCombatManual;
     }
 
     public void TurnOnManual(bool isQuestDone)
     {
         // If the quest is already done, do not turn on controlManual again.
-        controlManual.SetActive(!isQuestDone);
+        combatManual.SetActive(!isQuestDone);
     }
 
-    public void TurnOffManual()
+    public void TurnOffCombatManual()
     {
-        controlManual.SetActive(false);
+        combatManual.SetActive(false);
+
+        StartCoroutine(ShowGeneralManual());
+    }
+
+    IEnumerator ShowGeneralManual()
+    {
+        generalManual.SetActive(true);
+
+        yield return new WaitForSeconds(generalManualShownTime);
+
+        generalManual.SetActive(false);
     }
 }

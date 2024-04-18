@@ -24,7 +24,7 @@ public class DisplayInventory : MonoBehaviour
         // Unsubscribe from the InventoryChanged event when the object is destroyed
         inventory.InventoryChanged -= UpdateDisplay;
     }
-    
+
     public void CreateDisplay()
     {
         for (int i = 0; i < inventory.Container.items.Count; i++)
@@ -87,7 +87,5 @@ public class DisplayInventory : MonoBehaviour
             }
         }
     }
-
-
 }
 

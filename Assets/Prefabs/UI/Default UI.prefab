@@ -308,13 +308,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bd562ad90d040459a3ff33e646a7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   dialogueWindow: {fileID: 9052021588555210776}
-  inputManager: {fileID: 0}
+  questManager: {fileID: 0}
   nameText: {fileID: 108359455804007189}
   dialogueText: {fileID: 7567313926473038227}
   questDialogue: {fileID: 11400000, guid: 229303bda7c5e9442b7e869c03239e0f, type: 2}
   questInProcessDialogue: {fileID: 11400000, guid: f831869f9318a634ea38ecee342ca4e6, type: 2}
+  questDoneDialogue: {fileID: 0}
 --- !u!1 &7456391891736330887
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,28 +1,37 @@
-using TMPro;
 using UnityEngine;
+
 
 public class TutorialQuestManager : QuestManager
 {
+    [SerializeField] DialogueManager dialogueManager;
     [SerializeField] Health enemyHealth;
     [SerializeField] GameObject portal;
+
+    private bool isExpGained = false;
 
 
     private void OnEnable()
     {
         enemyHealth.OnDie += UpdateProgression;
-        OnQuestDone += ActivatePortal;
+        dialogueManager.OnFinishDialogue += CheckQuestProgression;
 
-        goalNum = 1;
+        GoalNum = 1;
+        QuestExp = 10;
     }
 
     private void OnDisable()
     {
         enemyHealth.OnDie -= UpdateProgression;
-        OnQuestDone -= ActivatePortal;
+        dialogueManager.OnFinishDialogue -= CheckQuestProgression;
     }
 
-    public void ActivatePortal(int notUsedHere)
+    private void CheckQuestProgression(bool isQuestDone)
     {
-        portal.SetActive(true);
+        if (isQuestDone && !isExpGained)
+        {
+            ExperienceManager.Singleton.AddExperience(QuestExp);
+            isExpGained = true;
+            portal.SetActive(true);
+        }
     }
 }

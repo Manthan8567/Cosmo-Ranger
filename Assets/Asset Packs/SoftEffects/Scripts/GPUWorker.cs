@@ -1851,7 +1851,7 @@ namespace Mkey
         {
             TextSize.SetSize(inputText.width, inputText.height);
             float tg25 = 0.00466308f;
-            int pRow = 16;
+            //int pRow = 16;
 
             cutBuffer = new ComputeBuffer(TextSize.WxH, 4);//  Mkey.PrintData.BufTostring(dtBuffer, inputText.width, inputText.height, pRow, -1, false);
             cosineBuffer = new ComputeBuffer(TextSize.WxH, 4);
@@ -1915,7 +1915,7 @@ namespace Mkey
 
         public void GPURenderBevelOutside_R8(Texture inputText, ComputeBuffer dtBuffer, ref RenderTexture outTextLight, ref RenderTexture outTextShadow, BevelOptions bevelOptions)
         {
-            int pRow = 16;
+            //int pRow = 16;
             float tg25 = 0.00466308f;
             TextSize.SetSize(inputText.width, inputText.height);
             ReCreateRenderTexture(ref outTextLight, RenderTextureFormat.R8, TextSize.Width, TextSize.Height);

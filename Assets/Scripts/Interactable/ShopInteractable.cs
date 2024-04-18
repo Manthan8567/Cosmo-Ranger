@@ -29,21 +29,18 @@ public class ShopInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
+        ShopUI_Display.SetActive(true);
 
         playerStateMachine.enabled = false;
-
-        ShopUI_Display.SetActive(true);
 
         if (playerAnimator != null)
         {
             playerAnimator.speed = 0f;
         }
-
     }
 
     public void ExitShop()
     {
-
         playerStateMachine.enabled = true;
         playerAnimator.speed = 1f;
 

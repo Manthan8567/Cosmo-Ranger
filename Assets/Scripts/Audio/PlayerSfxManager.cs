@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlayerSfxManager : MonoBehaviour
 {
@@ -63,6 +62,7 @@ public class PlayerSfxManager : MonoBehaviour
 
     private void PlayLevelUpSound()
     {
+        Debug.Log("play level up sfx");
         AudioManager.Singleton.PlaySoundEffect(levelUpSfx);
     }
 }

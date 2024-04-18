@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 
+
 public abstract class QuestManager : MonoBehaviour
 {
-    public bool isQuestDone { get; private set; } = false;
-    public int goalNum { get; set; }
+    public bool IsQuestDone { get; private set; } = false;
+    public int QuestExp { get; set; }
+    public int GoalNum { get; set; }
+
     private int currProgression = 0;
 
     public event Action<int> OnUpdateProgression;
@@ -17,9 +20,9 @@ public abstract class QuestManager : MonoBehaviour
 
         OnUpdateProgression?.Invoke(currProgression);
 
-        if (currProgression >= goalNum)
+        if (currProgression >= GoalNum)
         {
-            isQuestDone = true;
+            IsQuestDone = true;
 
             OnQuestDone?.Invoke(currProgression);
         }

@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3089375517106519900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6080785219468990113}
+  - component: {fileID: 5059922607406425481}
+  - component: {fileID: 5444658564065269715}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6080785219468990113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3089375517106519900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5059922607406425481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3089375517106519900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fc3a8ba70deea4796568b56f951914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - soundName: Mr.DoTalk
+    audioClip: {fileID: 8300000, guid: caf50f14bdc2840ffb0bfa66d5285331, type: 3}
+  - soundName: SpaceshipTalk
+    audioClip: {fileID: 8300000, guid: 6b5a6bade430446bdb1277645ae68178, type: 3}
+  - soundName: CollectDiamond
+    audioClip: {fileID: 8300000, guid: 0f579092c76764d8e8df04853e9a2c13, type: 3}
+  - soundName: Fireball
+    audioClip: {fileID: 8300000, guid: ceede7a829d41470a86526620500b878, type: 3}
+  - soundName: Footstep
+    audioClip: {fileID: 8300000, guid: 22b5b26c3429f42c482afafb562afc2a, type: 3}
+  - soundName: PlayerDeath
+    audioClip: {fileID: 8300000, guid: be8f35d0ffa544fde837064d01ad7063, type: 3}
+  - soundName: EnemyTakeDamage
+    audioClip: {fileID: 8300000, guid: d9fbd40df37d34b57a63581db411006c, type: 3}
+  - soundName: PlayerTakeDamage
+    audioClip: {fileID: 8300000, guid: ffa08c2947905a544ac3dc83100dfb10, type: 3}
+  - soundName: EnemyDeath
+    audioClip: {fileID: 8300000, guid: 637162f47796b44ad8b65114350467e3, type: 3}
+  - soundName: HitFireball
+    audioClip: {fileID: 8300000, guid: d9fbd40df37d34b57a63581db411006c, type: 3}
+  - soundName: LevelUp
+    audioClip: {fileID: 8300000, guid: b2204f47b903e413e8e8e442d60a8ca1, type: 3}
+  - soundName: PlayerAttack1
+    audioClip: {fileID: 8300000, guid: b17fb0a4fa993324884e00da38e7c536, type: 3}
+  - soundName: PlayerAttack2
+    audioClip: {fileID: 8300000, guid: 44b26937da1ab5543a57e75d61cca455, type: 3}
+  - soundName: PlayerAttack3
+    audioClip: {fileID: 8300000, guid: 19a68d1b5daf7374d999f55343a7e053, type: 3}
+  - soundName: UpgradeSword
+    audioClip: {fileID: 8300000, guid: b2204f47b903e413e8e8e442d60a8ca1, type: 3}
+--- !u!82 &5444658564065269715
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3089375517106519900}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8b051f61e6b54bb43b57ee3437cea927, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

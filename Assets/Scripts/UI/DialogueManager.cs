@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogueWindow;
@@ -76,11 +77,11 @@ public class DialogueManager : MonoBehaviour
 
     public void FinishDialogue()
     {
-        OnFinishDialogue?.Invoke(questManager.isQuestDone);
+        OnFinishDialogue?.Invoke(questManager.IsQuestDone);
 
         dialogueWindow.SetActive(false);
 
-        if (!questManager.isQuestDone)
+        if (!questManager.IsQuestDone)
         {
             // From now, NPC will read questInProcessDialogue.
             currDialogue = questInProcessDialogue;

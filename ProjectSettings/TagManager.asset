@@ -9,6 +9,7 @@ TagManager:
   - Ragdoll
   - ExperienceManager
   - PlayerInfoUI
+  - QuestManager
   layers:
   - Default
   - TransparentFX

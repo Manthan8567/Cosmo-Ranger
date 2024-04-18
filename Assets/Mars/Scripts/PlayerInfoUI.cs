@@ -21,7 +21,8 @@ public class PlayerInfoUI : MonoBehaviour
     //private ExperienceManager experienceManager;
     
 
-    private int totalKills = 0; // Variable to store total kills
+    public int totalKills { get; private set; } = 0; // Variable to store total kills
+
 
     private void Start()
     {

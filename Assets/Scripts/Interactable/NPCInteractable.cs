@@ -6,13 +6,14 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private Transform chatBubblePos;
-    [SerializeField] private AudioClip voice; // NPC will have different voices
+    [SerializeField] private AudioClip voice;
     [SerializeField] private string interactText;
     [SerializeField] private string chatBubbleText = "Write your own text in inspector";
     [SerializeField] private float chatBubbleCoolTime = 10f;
     [SerializeField] private float chatBubblePopUpTime = 6f;
 
     private float timeSinceChatBubblePopUp;
+
 
     private void Start()
     {
