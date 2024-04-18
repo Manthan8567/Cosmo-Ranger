@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerSfxManager : MonoBehaviour
 {
-    [SerializeField] ExperienceManager experienceManager;
     private Health health;
 
     // You can find audio lists in the inspector of AudioManager
@@ -23,7 +22,7 @@ public class PlayerSfxManager : MonoBehaviour
         health.OnTakeDamage += PlayTakeDamageSound;
         health.OnDie += PlayDeathSound;
 
-        experienceManager.OnLevelUp += PlayLevelUpSound;   
+        ExperienceManager.Singleton.OnLevelUp += PlayLevelUpSound;
     }
 
     private void OnDisable()
@@ -31,7 +30,7 @@ public class PlayerSfxManager : MonoBehaviour
         health.OnTakeDamage -= PlayTakeDamageSound;
         health.OnDie -= PlayDeathSound;
 
-        experienceManager.OnLevelUp -= PlayLevelUpSound;
+        ExperienceManager.Singleton.OnLevelUp -= PlayLevelUpSound;
     }
 
     #region AnimationEvents
