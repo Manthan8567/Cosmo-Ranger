@@ -9323,7 +9323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308609555105271577, guid: a6dbeba86f670aa4a84d60033f79b210, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8308609555105271577, guid: a6dbeba86f670aa4a84d60033f79b210, type: 3}
       propertyPath: m_Pivot.y
@@ -9331,7 +9331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308609555105271577, guid: a6dbeba86f670aa4a84d60033f79b210, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8308609555105271577, guid: a6dbeba86f670aa4a84d60033f79b210, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9339,7 +9339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308609555105271577, guid: a6dbeba86f670aa4a84d60033f79b210, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8308609555105271577, guid: a6dbeba86f670aa4a84d60033f79b210, type: 3}
       propertyPath: m_AnchorMin.y
@@ -14045,6 +14045,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5444658564065269715, guid: f3b2f2c5261271c478e3066ae24d1960, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 08b35a0c2779b0844b56a2468301aebd, type: 3}
     - target: {fileID: 6080785219468990113, guid: f3b2f2c5261271c478e3066ae24d1960, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
