@@ -1,4 +1,4 @@
-# [Cosmic Ranger]
+# [Cosmo Ranger]
 
 ## Game description:
 - This is a Third person RPG game made in Unity.
